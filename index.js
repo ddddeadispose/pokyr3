@@ -17,9 +17,9 @@ const kurOptions = {
 const start = () => {
 
     bot.setMyCommands([
-        {command: '/start', description: 'Начало покура'},
-        {command: '/version', description: 'Версия бота'},
-        {command: '/kur', description: 'Тэгнуть курильщиков'},
+        {command: '/start@Pokyr_Casino_Bot', description: 'Начало покура'},
+        {command: '/version@Pokyr_Casino_Bot', description: 'Версия бота'},
+        {command: '/kur@Pokyr_Casino_Bot', description: 'Тэгнуть курильщиков'},
     ])
 
     bot.on( 'message', async msg => {
