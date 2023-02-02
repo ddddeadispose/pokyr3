@@ -26,18 +26,18 @@ const start = () => {
         const text = msg.text;
         const chatId = msg.chat.id;
 
-        if (text === '/start'){
+        if (text === '/start@Pokyr_Casino_Bot'){
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
             return bot.sendMessage(chatId, 'Ну что, покурить хотим?')
         }
 
-        if (text === '/kur'){
+        if (text === '/kur@Pokyr_Casino_Bot'){
 
             return bot.sendMessage(chatId,'Кто пойдет курить?', kurOptions)
         }
 
-        if (text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.2 beta')
+        if (text === '/version@Pokyr_Casino_Bot'){
+            return bot.sendMessage(chatId, 'Версия бота: 0.3 beta Debian 94.228.112.55 root ')
         }
         return bot.sendMessage(chatId, 'Я нихуя не понял. Че тебе надо?')
     })
