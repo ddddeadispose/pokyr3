@@ -54,7 +54,7 @@ const start = () => {
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.53 beta Debian 94.228.112.55 root ')
+            return bot.sendMessage(chatId, 'Версия бота: 0.54 beta Debian 94.228.112.55 root ')
         }
 
         return bot.sendMessage(chatId, 'Я нихуя не понял. Че тебе надо?')
@@ -67,10 +67,10 @@ const start = () => {
 
         if (data === 'st'){
 
-            await bot.sendMessage(220815377, 'Пойдём курить стандртным паком, чел.')
-            await bot.sendMessage(60588441, 'Пойдём курить стандртным паком, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём курить стандртным паком, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём курить стандртным паком, Илья.')
+            await bot.sendMessage(220815377, 'Пойдём курить стандартным паком, чел.')
+            await bot.sendMessage(60588441, 'Пойдём курить стандартным паком, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём курить стандартным паком, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём курить стандартным паком, Илья.')
 
             return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy курение')
 
