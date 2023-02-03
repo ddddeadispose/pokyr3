@@ -4,12 +4,26 @@ const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 
 const bot = new TelegramApi(token, {polling: true})
 
-const kurOptions = {
+const CronJob = require('cron').CronJob;
+const job = new CronJob(
+    '* 9 * * *',
+    function() {
+        console.log('Good morning');
+        return bot.sendMessage(-576852718, 'Доброе утро, Казино!')
+    },
+    null,
+    true,
+    'Europe/Moscow'
+);
+
+const tagOptions = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            [{text: 'Стандарт пак: Сёма, Паша, Антон, Илья', callback_data: 'st'}],
-            [{text: 'Расширенный пак: Сёма, Паша, Антон, Илья, Даня, Дима', callback_data: 'rs'}],
-            [{text: 'Все вместе', callback_data: 'all'}]
+            [{text: 'Курение стандарт пак 🚬', callback_data: 'st'}],
+            [{text: 'Курение расширенный пак 🚬', callback_data: 'rs'}],
+            [{text: 'Все вместе 🚬', callback_data: 'all'}],
+            [{text: 'На обед 🍽', callback_data: 'ob'}],
+            [{text: 'На подтяг 🫂', callback_data: 'pdg'}]
         ]
     })
 }
@@ -19,27 +33,32 @@ const start = () => {
     bot.setMyCommands([
         {command: '/start@Pokyr_Casino_Bot', description: 'Начало покура'},
         {command: '/version@Pokyr_Casino_Bot', description: 'Версия бота'},
-        {command: '/kur@Pokyr_Casino_Bot', description: 'Тэгнуть курильщиков'},
+        {command: '/tag@Pokyr_Casino_Bot', description: 'Тэгнуть челиков'},
     ])
+
 
     bot.on( 'message', async msg => {
         const text = msg.text;
         const chatId = msg.chat.id;
+        console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
             return bot.sendMessage(chatId, 'Ну что, покурить хотим?')
+
         }
 
-        if (text === '/kur@Pokyr_Casino_Bot' || text === '/kur'){
+        if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag' || text === '/kur@Pokyr_Casino_Bot'|| text === '/kur'){
 
-            return bot.sendMessage(chatId,'Кто пойдет курить?', kurOptions)
+            return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.33 beta Debian 94.228.112.55 root ')
+            return bot.sendMessage(chatId, 'Версия бота: 0.53 beta Debian 94.228.112.55 root ')
         }
+
         return bot.sendMessage(chatId, 'Я нихуя не понял. Че тебе надо?')
+
     })
 
     bot.on('callback_query', async msg => {
@@ -47,15 +66,66 @@ const start = () => {
         const chatId = msg.message.chat.id;
 
         if (data === 'st'){
-        return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy курение')
+
+            await bot.sendMessage(220815377, 'Пойдём курить стандртным паком, чел.')
+            await bot.sendMessage(60588441, 'Пойдём курить стандртным паком, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём курить стандртным паком, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём курить стандртным паком, Илья.')
+
+            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy курение')
+
         }
 
         if (data === 'rs'){
+
+            await bot.sendMessage(220815377, 'Пойдём курить расширенным паком, чел. С Даней и Димой.')
+            await bot.sendMessage(60588441, 'Пойдём курить расширенным паком, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём курить расширенным паком, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём курить расширенным паком, Илья.')
+            await bot.sendMessage(462415609, 'Пойдём покурим, Даня! Если не можешь, ответь в чат')
+            await bot.sendMessage(230680864, 'Пойдём покурим, Дима! Если не можешь, ответь в чат.')
+
             return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @DmitriyBagaev курение')
+
         }
 
         if (data === 'all'){
+
+            await bot.sendMessage(220815377, 'Пойдём курить все нахуй.')
+            await bot.sendMessage(60588441, 'Пойдём курить все нахуй, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём курить все нахуй, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём курить все нахуй, Илья.')
+            await bot.sendMessage(462415609, 'Пойдём покурим все нахуй, Даня! Если не можешь, ответь в чат')
+            await bot.sendMessage(230680864, 'Пойдём покурим все нахуй, Дима! Если не можешь, ответь в чат.')
+            await bot.sendMessage(314197836, 'Пойдём покурим все нахуй, Андрей! Если не можешь, ответь в чат.')
+
             return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @DmitriyBagaev, @akapenkin курение')
+
+        }
+
+        if (data === 'ob'){
+
+            await bot.sendMessage(220815377, 'Ушли на обед.')
+            await bot.sendMessage(60588441, 'Пойдём на обед, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём на обед, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём на обед, Илья.')
+            await bot.sendMessage(462415609, 'Пойдём на обед, Даня!')
+            await bot.sendMessage(314197836, 'Пойдём на обед, Андрей!')
+
+            return bot.sendMessage(chatId, '@Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @akapenkin идём на обед')
+
+        }
+
+        if (data === 'pdg'){
+
+            await bot.sendMessage(220815377, 'Пойдём на подтяг.')
+            await bot.sendMessage(60588441, 'Пойдём на подтяг, Semen.')
+            await bot.sendMessage(275234023, 'Пойдём на подтяг, Антон!')
+            await bot.sendMessage(472281105, 'Пойдём на подтяг, Илья.')
+            await bot.sendMessage(314197836, 'Пойдём на подтяг, Андрей!')
+
+            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @akapenkin подтяг жесткий')
+
         }
 
     })
