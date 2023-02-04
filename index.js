@@ -5,6 +5,7 @@ const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
 
 const CronJob = require('cron').CronJob;
+
 const job = new CronJob(
     '00 9 * * *',
     function() {
@@ -28,18 +29,32 @@ const tagOptions = {
     })
 }
 
+const pasOptions = {
+    reply_markup: JSON.stringify({
+        inline_keyboard: [
+            [{text: 'Я начал новую жизнь', callback_data: 'fake'}],
+            [{text: 'Я трахнул Семёна в попку', callback_data: 'fake'}],
+            [{text: 'Антоха меня захэйтил', callback_data: 'fake'}],
+            [{text: 'Они снова меня туда затащили...', callback_data: 'true'}],
+            [{text: 'Я жестка раскурил сигаретину', callback_data: 'fake'}]
+        ]
+    })
+}
+
 const start = () => {
 
     bot.setMyCommands([
         {command: '/start@Pokyr_Casino_Bot', description: 'Начало покура'},
         {command: '/version@Pokyr_Casino_Bot', description: 'Версия бота'},
         {command: '/tag@Pokyr_Casino_Bot', description: 'Тэгнуть челиков'},
+        {command: '/updates', description: 'Последние обновления'},
     ])
 
 
     bot.on( 'message', async msg => {
         const text = msg.text;
         const chatId = msg.chat.id;
+        const data = msg.data;
         console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
@@ -54,7 +69,22 @@ const start = () => {
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.55 beta Debian 94.228.112.55 root ')
+            return bot.sendMessage(chatId, 'Версия бота: 0.56.1 beta Debian 94.228.112.55 root ')
+        }
+
+        if (text === '/updates'){
+
+            await bot.sendMessage(chatId,'0.56.1 | 4.02.23 |Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'Добавлена пасхалка, кто первый отгадает, тому пиво')
+            return  bot.sendMessage(chatId,'Исправлено рекурсивное выбешивание Антона добрым утром))')
+
+
+        }
+
+        if (text === 'Пасхалочка'){
+
+            return bot.sendMessage(chatId,'И когда я думал, что я уже завязал', pasOptions)
+
         }
 
         return bot.sendMessage(chatId, 'Я нихуя не понял. Че тебе надо?')
@@ -128,6 +158,18 @@ const start = () => {
 
         }
 
+        if (data === 'true'){
+
+            await  bot.sendMessage(chatId, '🎰')
+            return bot.sendMessage(chatId, 'Ты разгадал легчайшую пасхалку, с меня пиво')
+
+        }
+
+        if (data === 'fake'){
+
+            return bot.sendMessage(chatId, 'Ты жестко пососал')
+
+        }
     })
 }
 
