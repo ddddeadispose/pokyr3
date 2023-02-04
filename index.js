@@ -6,7 +6,7 @@ const bot = new TelegramApi(token, {polling: true})
 
 const CronJob = require('cron').CronJob;
 const job = new CronJob(
-    '* 9 * * *',
+    '00 9 * * *',
     function() {
         console.log('Good morning');
         return bot.sendMessage(-576852718, 'Доброе утро, Казино!')
