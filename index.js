@@ -10,7 +10,7 @@ const job = new CronJob(
     '00 9 * * *',
     function() {
         console.log('Good morning');
-        return bot.sendMessage(-576852718, 'Доброе утро, Казино!')
+        return bot.sendMessage(-576852718, 'Доброе утро, Казино!!')
     },
     null,
     true,
