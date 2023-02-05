@@ -74,7 +74,7 @@ const start = () => {
 
         if (text === '/updates'){
 
-            await bot.sendMessage(chatId,'0.56.1 | 4.02.23 |Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'0.56.1 | 4.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'Добавлена пасхалка, кто первый отгадает, тому пиво')
             return  bot.sendMessage(chatId,'Исправлено рекурсивное выбешивание Антона добрым утром))')
 
