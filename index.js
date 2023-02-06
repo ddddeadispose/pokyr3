@@ -16,6 +16,16 @@ const job = new CronJob(
     true,
     'Europe/Moscow'
 );
+//Переменные людей епта
+let Me = 220815377; let nameMe = ' @b2b_daddy'; let MeTr = true; // Паша
+let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; SemenTr = true; // Семен
+let D = 462415609; let nameD = ' @Axtra4an'; DTr = true; // Даня
+let An = 314197836; let nameAn = ' @akapenkin'; AnTr = true; // Анрей
+let Dima = 230680864; let nameDima = ' @DmitriyBagaev'; DimaTr = true; // Дима
+let Ant = 275234023; let nameAnt = ' @antnmorozov'; AntTr = true; // Антон
+let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
+
+
 
 const tagOptions = {
     reply_markup: JSON.stringify({
@@ -24,19 +34,19 @@ const tagOptions = {
             [{text: 'Курение расширенный пак 🚬', callback_data: 'rs'}],
             [{text: 'Все вместе 🚬', callback_data: 'all'}],
             [{text: 'На обед 🍽', callback_data: 'ob'}],
-            [{text: 'На подтяг 🫂', callback_data: 'pdg'}]
+            [{text: 'На подтяг 🫂', callback_data: 'pdg'}],
+            [{text: 'Кого сегодня нет? ❌', callback_data: 'net'}],
         ]
     })
 }
 
-const pasOptions = {
+const netOptions = {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            [{text: 'Я начал новую жизнь', callback_data: 'fake'}],
-            [{text: 'Я трахнул Семёна в попку', callback_data: 'fake'}],
-            [{text: 'Антоха меня захэйтил', callback_data: 'fake'}],
-            [{text: 'Они снова меня туда затащили...', callback_data: 'true'}],
-            [{text: 'Я жестка раскурил сигаретину', callback_data: 'fake'}]
+            [{text: 'Паши', callback_data: 'P'}, {text: 'Семёна', callback_data: 'S'}],
+            [{text: 'Дани', callback_data: 'D'}, {text: 'Андрея', callback_data: 'An'}],
+            [{text: 'Димы', callback_data: 'Di'}, {text: 'Ильи', callback_data: 'I'}],
+            [{text: 'Антона', callback_data: 'Ant'}],
         ]
     })
 }
@@ -47,8 +57,8 @@ const start = () => {
         {command: '/start@Pokyr_Casino_Bot', description: 'Начало покура'},
         {command: '/version@Pokyr_Casino_Bot', description: 'Версия бота'},
         {command: '/tag@Pokyr_Casino_Bot', description: 'Тэгнуть челиков'},
-        {command: '/updates', description: 'Последние обновления'},
-    ])
+        {command: '/updates', description: 'Последние обновления'},]
+    )
 
 
     bot.on( 'message', async msg => {
@@ -69,21 +79,64 @@ const start = () => {
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.56.1 beta Debian 94.228.112.55 root ')
+            return bot.sendMessage(chatId, 'Версия бота: 0.66.6 beta Debian 94.228.112.55 root ')
         }
 
         if (text === '/updates'){
 
-            await bot.sendMessage(chatId,'0.56.1 | 4.02.23 | Добавлено и исправлено: ')
-            await bot.sendMessage(chatId,'Добавлена пасхалка, кто первый отгадает, тому пиво')
-            return  bot.sendMessage(chatId,'Исправлено рекурсивное выбешивание Антона добрым утром))')
+            await bot.sendMessage(chatId,'0.66.6 | 6.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'ЭТО САМОЕ ЕБЕЙШЕЕ ОБНОВЛЕНИЕ. Теперь вы можете через специальную кнопку отметить, что вас нет в офисе. Внимение! Если вы вернулись в офис, то просто напишете боту в лс "бот я вернулся" и вас снома будет тэгать.')
+            return  bot.sendMessage(chatId,'Антон разгадал пасхалку и получает пиво! 🍺')
 
 
         }
 
-        if (text === 'Пасхалочка'){
+        if (text === 'Бот я вернулся' || text === 'бот я вернулся'){
 
-            return bot.sendMessage(chatId,'И когда я думал, что я уже завязал', pasOptions)
+            if (chatId === Me){
+
+                await (MeTr = true)
+                await (nameMe = ' @b2b_daddy')
+            }
+
+            if (chatId === Semen){
+
+                await (SemenTr = true)
+                await (nameSemen = ' @Grafico_Sogly')
+            }
+
+            if (chatId === D){
+
+                await (DTr = true)
+                await (nameD = ' @Axtra4an')
+            }
+
+            if (chatId === An){
+
+                await (AnTr = true)
+                await (nameAn = ' @akapenkin')
+            }
+
+            if (chatId === Dima){
+
+                await (DimaTr = true)
+                await (nameDima = '@DmitriyBagaev')
+            }
+
+            if (chatId === Ant){
+
+                await (AntTr = true)
+                await (nameAnt = '@antnmorozov')
+            }
+
+            if (chatId === Il){
+
+                await (IlTr = true)
+                await (nameIl = ' @Milk_Daddy')
+            }
+
+            return  bot.sendMessage(chatId,'Здорово, рад тебя видеть! Ну чё, давай о деле поговорим?')
+
 
         }
 
@@ -94,83 +147,305 @@ const start = () => {
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
-
+        // Ниже процесс проверки присутствия и тэг + оповещение в лс
+        // Курение стандартным паком
         if (data === 'st'){
 
-            await bot.sendMessage(220815377, 'Пойдём курить стандартным паком, чел.')
-            await bot.sendMessage(60588441, 'Пойдём курить стандартным паком, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём курить стандартным паком, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём курить стандартным паком, Илья.')
+            if (MeTr === true) {
+                await bot.sendMessage(Me, 'Пойдём курить стандартным паком, чел.')
+            }
+            else {
+                await (nameMe = ' ')
+            }
 
-            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy курение')
+            if (SemenTr === true) {
+                await bot.sendMessage(Semen, 'Пойдём курить стандартным паком, Semen.')
+            }
+            else {
+                await (nameSemen = ' ')
+            }
+
+            if (AntTr === true) {
+                await bot.sendMessage(Ant, 'Пойдём курить стандартным паком, Антон!')
+            }
+            else {
+                await (nameAnt = ' ')
+            }
+
+            if (IlTr === true) {
+                await bot.sendMessage(Il, 'Пойдём курить стандартным паком, Илья.')
+            }
+            else {
+                await (nameIl = ' ')
+            }
+
+            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
 
         }
-
+        // Курение расширенным паком
         if (data === 'rs'){
 
-            await bot.sendMessage(220815377, 'Пойдём курить расширенным паком, чел. С Даней и Димой.')
-            await bot.sendMessage(60588441, 'Пойдём курить расширенным паком, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём курить расширенным паком, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём курить расширенным паком, Илья.')
-            await bot.sendMessage(462415609, 'Пойдём покурим, Даня! Если не можешь, ответь в чат')
-            await bot.sendMessage(230680864, 'Пойдём покурим, Дима! Если не можешь, ответь в чат.')
+            if (MeTr === true) {
+                await bot.sendMessage(Me, 'Пойдём курить расширенным паком, чел.')
+            }
+            else {
+                await (nameMe = ' ')
+            }
 
-            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @DmitriyBagaev курение')
+            if (SemenTr === true) {
+                await bot.sendMessage(Semen, 'Пойдём курить расширенным паком, Semen.')
+            }
+            else {
+                await (nameSemen = ' ')
+            }
+
+            if (AntTr === true) {
+                await bot.sendMessage(Ant, 'Пойдём курить расширенным паком, Антон!')
+            }
+            else {
+                await (nameAnt = ' ')
+            }
+
+            if (IlTr === true) {
+                await bot.sendMessage(Il, 'Пойдём курить расширенным паком, Илья.')
+            }
+            else {
+                await (nameIl = ' ')
+            }
+
+            if (DTr === true) {
+                await bot.sendMessage(D, 'Даня, погнали курить.')
+            }
+            else {
+                await (nameD = ' ')
+            }
+
+            if (DimaTr === true) {
+                await bot.sendMessage(Dima, 'Дима, погнали курить.')
+            }
+            else {
+                await (nameDima = ' ')
+            }
+
+            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
+
 
         }
-
+        // Курение все вместе
         if (data === 'all'){
 
-            await bot.sendMessage(220815377, 'Пойдём курить все нахуй.')
-            await bot.sendMessage(60588441, 'Пойдём курить все нахуй, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём курить все нахуй, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём курить все нахуй, Илья.')
-            await bot.sendMessage(462415609, 'Пойдём покурим все нахуй, Даня! Если не можешь, ответь в чат')
-            await bot.sendMessage(230680864, 'Пойдём покурим все нахуй, Дима! Если не можешь, ответь в чат.')
-            await bot.sendMessage(314197836, 'Пойдём покурим все нахуй, Андрей! Если не можешь, ответь в чат.')
+            if (MeTr === true) {
+                await bot.sendMessage(Me, 'Идём курить все нахуй')
+            }
+            else {
+                await (nameMe = ' ')
+            }
 
-            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @DmitriyBagaev, @akapenkin курение')
+            if (SemenTr === true) {
+                await bot.sendMessage(Semen, 'Идём курить все нахуй')
+            }
+            else {
+                await (nameSemen = ' ')
+            }
+
+            if (AntTr === true) {
+                await bot.sendMessage(Ant, 'Идём курить все нахуй, Антон!')
+            }
+            else {
+                await (nameAnt = ' ')
+            }
+
+            if (IlTr === true) {
+                await bot.sendMessage(Il, 'Идём курить все нахуй')
+            }
+            else {
+                await (nameIl = ' ')
+            }
+
+            if (DTr === true) {
+                await bot.sendMessage(D, 'Даня, погнали курить. Все вместе!')
+            }
+            else {
+                await (nameD = ' ')
+            }
+
+            if (DimaTr === true) {
+                await bot.sendMessage(Dima, 'Дима, погнали курить. Все вместе!')
+            }
+            else {
+                await (nameDima = ' ')
+            }
+
+            if (AnTr === true) {
+                await bot.sendMessage(An, 'Андрюша, погнали курить.')
+            }
+            else {
+                await (nameAn = ' ')
+            }
+
+            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
 
         }
-
+        // обед
         if (data === 'ob'){
 
-            await bot.sendMessage(220815377, 'Ушли на обед.')
-            await bot.sendMessage(60588441, 'Пойдём на обед, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём на обед, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём на обед, Илья.')
-            await bot.sendMessage(462415609, 'Пойдём на обед, Даня!')
-            await bot.sendMessage(314197836, 'Пойдём на обед, Андрей!')
+            if (MeTr === true) {
+                await bot.sendMessage(Me, 'Ушли на обед')
+            }
+            else {
+                await (nameMe = ' ')
+            }
 
-            return bot.sendMessage(chatId, '@Grafico_Sogly, @antnmorozov, @Milk_Daddy, @Axtra4an, @akapenkin идём на обед')
+            if (SemenTr === true) {
+                await bot.sendMessage(Semen, 'Идём всасывать еду, Сёма')
+            }
+            else {
+                await (nameSemen = ' ')
+            }
+
+            if (AntTr === true) {
+                await bot.sendMessage(Ant, 'Идём на обед, Антон!')
+            }
+            else {
+                await (nameAnt = ' ')
+            }
+
+            if (IlTr === true) {
+                await bot.sendMessage(Il, 'Идём на обед!')
+            }
+            else {
+                await (nameIl = ' ')
+            }
+
+            if (DTr === true) {
+                await bot.sendMessage(D, 'Даня, идём на обед.')
+            }
+            else {
+                await (nameD = ' ')
+            }
+
+            if (AnTr === true) {
+                await bot.sendMessage(An, 'Андрюша, погнали на обед.')
+            }
+            else {
+                await (nameAn = ' ')
+            }
+
+            return bot.sendMessage(chatId, nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
+
 
         }
-
+        // Подтяг
         if (data === 'pdg'){
 
-            await bot.sendMessage(220815377, 'Пойдём на подтяг.')
-            await bot.sendMessage(60588441, 'Пойдём на подтяг, Semen.')
-            await bot.sendMessage(275234023, 'Пойдём на подтяг, Антон!')
-            await bot.sendMessage(472281105, 'Пойдём на подтяг, Илья.')
-            await bot.sendMessage(314197836, 'Пойдём на подтяг, Андрей!')
+            if (MeTr === true) {
+                await bot.sendMessage(Me, 'Подтяг')
+            }
+            else {
+                await (nameMe = ' ')
+            }
 
-            return bot.sendMessage(chatId, '@b2b_daddy, @Grafico_Sogly, @antnmorozov, @Milk_Daddy, @akapenkin подтяг жесткий')
+            if (SemenTr === true) {
+                await bot.sendMessage(Semen, 'Давай, пойдём накачаем твои хиленькие ручки')
+            }
+            else {
+                await (nameSemen = ' ')
+            }
+
+            if (AntTr === true) {
+                await bot.sendMessage(Ant, 'Подтяг!')
+            }
+            else {
+                await (nameAnt = ' ')
+            }
+
+            if (IlTr === true) {
+                await bot.sendMessage(Il, 'Подтяг!')
+            }
+            else {
+                await (nameIl = ' ')
+            }
+
+
+            if (AnTr === true) {
+                await bot.sendMessage(An,'Подтяг?')
+            }
+            else {
+                await (nameAn = ' ')
+            }
+
+            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
+
 
         }
 
-        if (data === 'true'){
 
-            await  bot.sendMessage(chatId, '🎰')
-            return bot.sendMessage(chatId, 'Ты разгадал легчайшую пасхалку, с меня пиво')
-
-        }
-
-        if (data === 'fake'){
-
-            return bot.sendMessage(chatId, 'Ты жестко пососал')
-
-        }
     })
+
+
+        //Вызов кнопок кого нет и изменения в переменных
+    bot.on('callback_query', async msg => {
+        const data = msg.data;
+        const chatId = msg.message.chat.id;
+
+        if (data === 'net'){
+
+            return bot.sendMessage(chatId,'Кого нет?', netOptions)
+
+        }
+
+        if (data === 'P'){
+
+            await bot.sendMessage(chatId,'Паши сегодня нет в офисе')
+            return (MeTr = false)
+
+        }
+
+        if (data === 'S'){
+
+            await bot.sendMessage(chatId,'Семёна сегодня нет в офисе')
+            return (SemenTr = false)
+
+        }
+
+        if (data === 'D'){
+
+            await bot.sendMessage(chatId,'Дани сегодня нет в офисе')
+            return (DTr = false)
+
+        }
+
+        if (data === 'An'){
+
+            await bot.sendMessage(chatId,'Андрея сегодня нет в офисе')
+            return (AnTr = false)
+
+        }
+
+        if (data === 'Di'){
+
+            await bot.sendMessage(chatId,'Димы сегодня нет в офисе')
+            return (DimaTr = false)
+
+        }
+
+        if (data === 'Ant'){
+
+            await bot.sendMessage(chatId,'Антона сегодня нет в офисе')
+            return (AntTr = false)
+
+        }
+
+        if (data === 'I'){
+
+            await bot.sendMessage(chatId,'Ильи сегодня нет в офисе')
+            return (IlTr = false)
+
+        }
+
+
+    })
+
 }
 
 start()
