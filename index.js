@@ -65,30 +65,12 @@ const start = () => {
         const text = msg.text;
         const chatId = msg.chat.id;
         const data = msg.data;
-        const { exec } = require("child_process");
 
         console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
             return bot.sendMessage(chatId, 'Ну что, покурить хотим?')
-
-        }
-
-        if (text === '/сmd'){
-
-            exec("ls -la", (error, stdout, stderr) => {
-                if (error) {
-                    console.log(`error: ${error.message}`);
-                    return;
-                }
-                if (stderr) {
-                    console.log(`stderr: ${stderr}`);
-                    return;
-                }
-                console.log(`stdout: ${stdout}`);
-            })
-            return bot.sendMessage(chatId, 'Отработало')
 
         }
 
@@ -159,7 +141,7 @@ const start = () => {
 
         }
 
-        return bot.sendMessage(chatId, 'Я нихуя не понял. Че тебе надо?')
+
 
     })
 
