@@ -65,6 +65,8 @@ const start = () => {
         const text = msg.text;
         const chatId = msg.chat.id;
         const data = msg.data;
+        const { exec } = require("child_process");
+
         console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
@@ -73,18 +75,35 @@ const start = () => {
 
         }
 
-        if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag' || text === '/kur@Pokyr_Casino_Bot'|| text === '/kur'){
+        if (text === '/сmd'){
+
+            exec("ls -la", (error, stdout, stderr) => {
+                if (error) {
+                    console.log(`error: ${error.message}`);
+                    return;
+                }
+                if (stderr) {
+                    console.log(`stderr: ${stderr}`);
+                    return;
+                }
+                console.log(`stdout: ${stdout}`);
+            });
+            return bot.sendMessage(chatId, 'Отработало')
+
+        }
+
+        if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag'){
 
             return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.66.6 beta Debian 94.228.112.55 root ')
+            return bot.sendMessage(chatId, 'Версия бота: 0.66.7 beta Debian 94.228.112.55 root ')
         }
 
-        if (text === '/updates'){
+        if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'0.66.6 | 6.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'0.66.7 | 8.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'ЭТО САМОЕ ЕБЕЙШЕЕ ОБНОВЛЕНИЕ. Теперь вы можете через специальную кнопку отметить, что вас нет в офисе. Внимение! Если вы вернулись в офис, то просто напишете боту в лс "бот я вернулся" и вас снома будет тэгать.')
             return  bot.sendMessage(chatId,'Антон разгадал пасхалку и получает пиво! 🍺')
 
