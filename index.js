@@ -87,7 +87,7 @@ const start = () => {
                     return;
                 }
                 console.log(`stdout: ${stdout}`);
-            });
+            })
             return bot.sendMessage(chatId, 'Отработало')
 
         }
