@@ -1,11 +1,9 @@
 const TelegramApi = require('node-telegram-bot-api')
-
 const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
-
 const bot = new TelegramApi(token, {polling: true})
-
 const CronJob = require('cron').CronJob;
 
+// Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
     '00 9 * * *',
     function() {
@@ -17,7 +15,7 @@ const job = new CronJob(
     'Europe/Moscow'
 );
 
-//Переменные людей епта
+// Объявление переменных людей
 let Me = 220815377; let nameMe = ' @b2b_daddy'; let MeTr = true; // Паша
 let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; SemenTr = true; // Семен
 let D = 462415609; let nameD = ' @Axtra4an'; DTr = true; // Даня
@@ -25,40 +23,10 @@ let An = 314197836; let nameAn = ' @akapenkin'; AnTr = true; // Анрей
 let Dima = 230680864; let nameDima = ' @DmitriyBagaev'; DimaTr = true; // Дима
 let Ant = 275234023; let nameAnt = ' @antnmorozov'; AntTr = true; // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
-//Менюшка
-const tagOptions = {
-    reply_markup: JSON.stringify({
-        inline_keyboard: [
-            [{text: 'Курение стандарт пак 🚬', callback_data: 'st'}],
-            [{text: 'Курение расширенный пак 🚬', callback_data: 'rs'}],
-            [{text: 'Все вместе 🚬', callback_data: 'all'}],
-            [{text: 'На обед 🍽', callback_data: 'ob'}],
-            [{text: 'На подтяг 🫂', callback_data: 'pdg'}],
-            [{text: 'Кого сегодня нет? ❌', callback_data: 'net'}],
-        ]
-    })
-}
-//Менюшка кого нет
-const netOptions = {
-    reply_markup: JSON.stringify({
-        inline_keyboard: [
-            [{text: 'Паши', callback_data: 'P'}, {text: 'Семёна', callback_data: 'S'}],
-            [{text: 'Дани', callback_data: 'D'}, {text: 'Андрея', callback_data: 'An'}],
-            [{text: 'Димы', callback_data: 'Di'}, {text: 'Ильи', callback_data: 'I'}],
-            [{text: 'Антона', callback_data: 'Ant'}],
-        ]
-    })
-}
+
+const {tagOptions, netOptions, cit} = require('./var'); // Подгружаем переменные менюшек
 
 const start = () => {
-
-    bot.setMyCommands([
-        {command: '/start@Pokyr_Casino_Bot', description: 'Начало покура'},
-        {command: '/version@Pokyr_Casino_Bot', description: 'Версия бота'},
-        {command: '/tag@Pokyr_Casino_Bot', description: 'Тэгнуть челиков'},
-        {command: '/updates', description: 'Последние обновления'},]
-    )
-
 
     bot.on( 'message', async msg => {
         const text = msg.text;
@@ -68,6 +36,7 @@ const start = () => {
         console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
+
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
             return bot.sendMessage(chatId, 'Ну что, покурить хотим?')
 
@@ -76,20 +45,24 @@ const start = () => {
         if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag'){
 
             return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
+
         }
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-            return bot.sendMessage(chatId, 'Версия бота: 0.66.7 beta Debian 94.228.112.55 root ')
+
+            return bot.sendMessage(chatId, 'Версия бота: 0.66.8 beta Debian 185.90.103.104')
+
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'0.66.7 | 8.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'0.66.8 | 9.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'ЭТО САМОЕ ЕБЕЙШЕЕ ОБНОВЛЕНИЕ. Теперь вы можете через специальную кнопку отметить, что вас нет в офисе. Внимение! Если вы вернулись в офис, то просто напишете боту в лс "бот я вернулся" и вас снова будет тэгать.')
             return  bot.sendMessage(chatId,'Антон разгадал пасхалку и получает пиво! 🍺')
 
 
         }
+
         //Проверка на возвращение
         if (text === 'Бот я вернулся' || text === 'бот я вернулся'){
 
@@ -97,42 +70,49 @@ const start = () => {
 
                 await (MeTr = true)
                 await (nameMe = ' @b2b_daddy')
+
             }
 
             if (chatId === Semen){
 
                 await (SemenTr = true)
                 await (nameSemen = ' @Grafico_Sogly')
+
             }
 
             if (chatId === D){
 
                 await (DTr = true)
                 await (nameD = ' @Axtra4an')
+
             }
 
             if (chatId === An){
 
                 await (AnTr = true)
                 await (nameAn = ' @akapenkin')
+
             }
 
             if (chatId === Dima){
 
                 await (DimaTr = true)
                 await (nameDima = '@DmitriyBagaev')
+
             }
 
             if (chatId === Ant){
 
                 await (AntTr = true)
                 await (nameAnt = '@antnmorozov')
+
             }
 
             if (chatId === Il){
 
                 await (IlTr = true)
                 await (nameIl = ' @Milk_Daddy')
+
             }
 
             return  bot.sendMessage(chatId,'Здорово, рад тебя видеть! Ну чё, давай о деле поговорим?')
@@ -140,6 +120,11 @@ const start = () => {
 
         }
 
+        if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
+
+            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * 18)])
+
+        }
 
 
     })
@@ -383,7 +368,7 @@ const start = () => {
     })
 
 
-        //Вызов кнопок кого нет и изменения в переменных
+    //Вызов кнопок кого нет и изменения в переменных
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
@@ -445,7 +430,6 @@ const start = () => {
 
 
     })
-
 
 }
 
