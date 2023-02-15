@@ -39,7 +39,6 @@ const start = () => {
         const chatId = msg.chat.id;
         const data = msg.data;
 
-        console.log(msg)
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
 
@@ -63,8 +62,8 @@ const start = () => {
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
             await bot.sendMessage(chatId,'version 0.7 | 16.02.23 | Добавлено и исправлено: ')
-            return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер. \n' +
-                'Чтобы сохранить цитату, напиши: "regcit: Твоя цитата смешная очень хихи". Пробел обязателен!')
+            return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер \n' +
+                'Чтобы сохранить цитату, напиши: "/regcit и через пробел ебани смешной прикол"')
 
 
         }
@@ -134,7 +133,7 @@ const start = () => {
 
         if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
 
-            bot.onText(/(regcit:)(.+)/, (msg, match) => {
+            bot.onText(/(regcit)(.+)/, (msg, match) => {
                 const chatId = msg.chat.id;
 
                 citf = match[2].substring(1);
