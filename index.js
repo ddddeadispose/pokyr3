@@ -31,6 +31,7 @@ let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на 
 let citf = ''; // Переменная для записи цитат
 
 
+
 const start = () => {
 
     bot.on( 'message', async msg => {
@@ -61,7 +62,7 @@ const start = () => {
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'0.7 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.7 | 16.02.23 | Добавлено и исправлено: ')
             return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер')
 
 
@@ -130,25 +131,30 @@ const start = () => {
 
         }
 
+        if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
+
+            bot.onText(/(.+)/, (msg, match) => {
+                const chatId = msg.chat.id;
+
+                citf = match[1].substring(8);
+
+                fs.writeFileSync(
+                    "cit.txt",
+                    "\n" + citf + '\',',
+                    { encoding: "utf-8", flag: "a" }
+                );
+
+                return bot.sendMessage(chatId, 'Записано');
+
+
+            })
+
+        }
 
     })
 
 
-    bot.onText(/Зацитируй (.+)/, (msg, match) => {
-        const chatId = msg.chat.id;
 
-        citf = match[1];
-
-        fs.writeFileSync(
-            "cit.txt",
-            "\n" + citf + '\',',
-            { encoding: "utf-8", flag: "a" }
-        );
-
-        return bot.sendMessage(chatId, 'Записано');
-
-
-    })
 
 
 
