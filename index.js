@@ -146,7 +146,7 @@ const start = () => {
 
                 return bot.sendMessage(chatId, 'Записано');
 
-
+                bot.clearTextListeners();
             })
 
         }
