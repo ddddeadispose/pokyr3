@@ -133,7 +133,7 @@ const start = () => {
 
         if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
 
-            bot.onText(/(.+)regcit(.+)/, (msg, match) => {
+            bot.onText(/(regcit)(.+)/, (msg, match) => {
                 const chatId = msg.chat.id;
 
                 citf = match[2].substring(1);
@@ -144,7 +144,7 @@ const start = () => {
                     { encoding: "utf-8", flag: "a" }
                 );
 
-                return bot.sendMessage(chatId, 'Записано');
+                return bot.sendMessage(chatId, 'Записано: ' + citf);
 
                 bot.removeTextListener(msg, match);
 
