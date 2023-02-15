@@ -63,7 +63,8 @@ const start = () => {
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
             await bot.sendMessage(chatId,'version 0.7 | 16.02.23 | Добавлено и исправлено: ')
-            return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер')
+            return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер. \n' +
+                'Чтобы сохранить цитату, напиши: "Сохрани: Твоя цитата смешная очень хихи". Пробел обязателен!')
 
 
         }
@@ -133,7 +134,7 @@ const start = () => {
 
         if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
 
-            bot.onText(/(c)(.+)/, (msg, match) => {
+            bot.onText(/(Сохрани:)(.+)/, (msg, match) => {
                 const chatId = msg.chat.id;
 
                 citf = match[2].substring(1);
