@@ -56,7 +56,7 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.66.8 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.76.8 beta Debian 185.90.103.104')
 
         }
 
