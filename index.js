@@ -133,10 +133,10 @@ const start = () => {
 
         if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
 
-            bot.onText(/(.+)/, (msg, match) => {
+            bot.onText(/(.+)regcit(.+)/, (msg, match) => {
                 const chatId = msg.chat.id;
 
-                citf = match[1].substring(8);
+                citf = match[2].substring(1);
 
                 fs.writeFileSync(
                     "cit.txt",
@@ -146,7 +146,8 @@ const start = () => {
 
                 return bot.sendMessage(chatId, 'Записано');
 
-                bot.clearTextListeners();
+                bot.removeTextListener(msg, match);
+
             })
 
         }
