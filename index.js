@@ -27,8 +27,6 @@ let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
 
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
-let citc = fs.readFileSync('citc.txt', 'utf8');
-let citcc = citc;
 let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
 let citf = ''; // Переменная для записи цитат
 
@@ -63,9 +61,8 @@ const start = () => {
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'0.66.8 | 9.02.23 | Добавлено и исправлено: ')
-            await bot.sendMessage(chatId,'ЭТО САМОЕ ЕБЕЙШЕЕ ОБНОВЛЕНИЕ. Теперь вы можете через специальную кнопку отметить, что вас нет в офисе. Внимение! Если вы вернулись в офис, то просто напишете боту в лс "бот я вернулся" и вас снова будет тэгать.')
-            return  bot.sendMessage(chatId,'Добавлены новые цитаты')
+            await bot.sendMessage(chatId,'0.7 | 16.02.23 | Добавлено и исправлено: ')
+            return  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер')
 
 
         }
@@ -129,7 +126,7 @@ const start = () => {
 
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
-            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * 19)])
+            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * cit.length)])
 
         }
 
@@ -137,8 +134,8 @@ const start = () => {
     })
 
 
-    bot.onText(/addcit (.+)/, (msg, match) => {
-        let userId = msg.from.id;
+    bot.onText(/Зацитируй (.+)/, (msg, match) => {
+        const chatId = msg.chat.id;
 
         citf = match[1];
 
@@ -148,25 +145,7 @@ const start = () => {
             { encoding: "utf-8", flag: "a" }
         );
 
-        fs.unlink('citc.txt', err => {
-            if(err) throw err; // не удалось удалить файл
-            console.log('Файл успешно удалён');
-        });
-
-        let exec = require('child_process').exec;
-        exec("touch citc.txt", function (err, stdout, stderr) {
-
-            console.log(stdout);
-
-        });
-
-        fs.writeFileSync(
-            "citc.txt",
-            citcc ++,
-            { encoding: "utf-8", flag: "a" }
-        );
-
-        return bot.sendMessage(userId, 'Записано цитат: ' + citcc);
+        return bot.sendMessage(chatId, 'Записано');
 
 
     })
