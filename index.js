@@ -2,6 +2,7 @@ const TelegramApi = require('node-telegram-bot-api')
 const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
 const CronJob = require('cron').CronJob;
+const fs = require("fs");
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -24,7 +25,13 @@ let Dima = 230680864; let nameDima = ' @DmitriyBagaev'; DimaTr = true; // Дим
 let Ant = 275234023; let nameAnt = ' @antnmorozov'; AntTr = true; // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
 
-const {tagOptions, netOptions, cit} = require('./var'); // Подгружаем переменные менюшек
+const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
+
+let citc = fs.readFileSync('citc.txt', 'utf8');
+let citcc = citc;
+let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
+let citf = ''; // Переменная для записи цитат
+
 
 const start = () => {
 
@@ -58,7 +65,7 @@ const start = () => {
 
             await bot.sendMessage(chatId,'0.66.8 | 9.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'ЭТО САМОЕ ЕБЕЙШЕЕ ОБНОВЛЕНИЕ. Теперь вы можете через специальную кнопку отметить, что вас нет в офисе. Внимение! Если вы вернулись в офис, то просто напишете боту в лс "бот я вернулся" и вас снова будет тэгать.')
-            return  bot.sendMessage(chatId,'Антон разгадал пасхалку и получает пиво! 🍺')
+            return  bot.sendMessage(chatId,'Добавлены новые цитаты')
 
 
         }
@@ -122,12 +129,49 @@ const start = () => {
 
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
-            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * 18)])
+            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * 19)])
 
         }
 
 
     })
+
+
+    bot.onText(/addcit (.+)/, (msg, match) => {
+        let userId = msg.from.id;
+
+        citf = match[1];
+
+        fs.writeFileSync(
+            "cit.txt",
+            "\n" + citf + '\',',
+            { encoding: "utf-8", flag: "a" }
+        );
+
+        fs.unlink('citc.txt', err => {
+            if(err) throw err; // не удалось удалить файл
+            console.log('Файл успешно удалён');
+        });
+
+        let exec = require('child_process').exec;
+        exec("touch citc.txt", function (err, stdout, stderr) {
+
+            console.log(stdout);
+
+        });
+
+        fs.writeFileSync(
+            "citc.txt",
+            citcc ++,
+            { encoding: "utf-8", flag: "a" }
+        );
+
+        return bot.sendMessage(userId, 'Записано цитат: ' + citcc);
+
+
+    })
+
+
 
     bot.on('callback_query', async msg => {
         const data = msg.data;
