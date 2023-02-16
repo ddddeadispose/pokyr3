@@ -3,6 +3,8 @@ const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
 const CronJob = require('cron').CronJob;
 const fs = require("fs");
+let LocalStorage = require('node-localstorage').LocalStorage;
+localStorage = new LocalStorage('./scratch');
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -16,14 +18,16 @@ const job = new CronJob(
     'Europe/Moscow'
 );
 
+
+
 // Объявление переменных людей
-let Me = 220815377; let nameMe = ' @b2b_daddy'; let MeTr = true; // Паша
-let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; SemenTr = true; // Семен
-let D = 462415609; let nameD = ' @Axtra4an'; DTr = true; // Даня
-let An = 314197836; let nameAn = ' @akapenkin'; AnTr = true; // Анрей
-let Dima = 230680864; let nameDima = ' @DmitriyBagaev'; DimaTr = true; // Дима
-let Ant = 275234023; let nameAnt = ' @antnmorozov'; AntTr = true; // Антон
-let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
+let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
+let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; // Семен
+let D = 462415609; let nameD = ' @Axtra4an'; // Даня
+let An = 314197836; let nameAn = ' @akapenkin'; // Анрей
+let Dima = 230680864; let nameDima = ' @DmitriyBagaev';  // Дима
+let Ant = 275234023; let nameAnt = ' @antnmorozov';  // Антон
+let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
@@ -36,6 +40,17 @@ const start = () => {
         const chatId = msg.chat.id;
         const data = msg.data;
 
+        if (text === '/test'){
+
+            return bot.sendMessage(chatId,localStorage.getItem('MeTr') +
+                localStorage.getItem('SemenTr') +
+                localStorage.getItem('DTr') +
+                localStorage.getItem('AnTr') +
+                localStorage.getItem('DimaTr') +
+                localStorage.getItem('AntTr') +
+                localStorage.getItem('IlTr'))
+
+        }
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
 
@@ -52,16 +67,18 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.78 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.78 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
+                'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
             await  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер \n' +
                 'Чтобы сохранить цитату, напиши: "/regcit и через пробел ебани смешной прикол"')
-            await bot.sendMessage(chatId,'Добавлена комманда /backup, чтобы посмотреть все цитаты')
+            await bot.sendMessage(chatId,'Добавлена комманда /backup, чтобы посмотреть все цитаты.')
             return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда приходилось заново отмечать тех, кого нет в офисе.')
 
 
@@ -72,49 +89,49 @@ const start = () => {
 
             if (chatId === Me){
 
-                await (MeTr = true)
+                await localStorage.setItem('MeTr', true);
                 await (nameMe = ' @b2b_daddy')
 
             }
 
             if (chatId === Semen){
 
-                await (SemenTr = true)
+                await localStorage.setItem('SemenTr', true);
                 await (nameSemen = ' @Grafico_Sogly')
 
             }
 
             if (chatId === D){
 
-                await (DTr = true)
+                await localStorage.setItem('DTr', true);
                 await (nameD = ' @Axtra4an')
 
             }
 
             if (chatId === An){
 
-                await (AnTr = true)
+                await localStorage.setItem('AnTr', true);
                 await (nameAn = ' @akapenkin')
 
             }
 
             if (chatId === Dima){
 
-                await (DimaTr = true)
+                await localStorage.setItem('DimaTr', true);
                 await (nameDima = '@DmitriyBagaev')
 
             }
 
             if (chatId === Ant){
 
-                await (AntTr = true)
+                await localStorage.setItem('AntTr', true);
                 await (nameAnt = '@antnmorozov')
 
             }
 
             if (chatId === Il){
 
-                await (IlTr = true)
+                await localStorage.setItem('IlTr', true);
                 await (nameIl = ' @Milk_Daddy')
 
             }
@@ -166,32 +183,33 @@ const start = () => {
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
+
         // Ниже процесс проверки присутствия и тэг + оповещение в лс
         // Курение стандартным паком
         if (data === 'st'){
 
-            if (MeTr === true) {
+            if (localStorage.getItem('MeTr') === 'true') {
                 await bot.sendMessage(Me, 'Пойдём курить стандартным паком, чел.')
             }
             else {
                 await (nameMe = ' ')
             }
 
-            if (SemenTr === true) {
+            if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Пойдём курить стандартным паком, Semen.')
             }
             else {
                 await (nameSemen = ' ')
             }
 
-            if (AntTr === true) {
+            if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Пойдём курить стандартным паком, Антон!')
             }
             else {
                 await (nameAnt = ' ')
             }
 
-            if (IlTr === true) {
+            if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Пойдём курить стандартным паком, Илья.')
             }
             else {
@@ -204,42 +222,42 @@ const start = () => {
         // Курение расширенным паком
         if (data === 'rs'){
 
-            if (MeTr === true) {
+            if (localStorage.getItem('MeTr') === 'true') {
                 await bot.sendMessage(Me, 'Пойдём курить расширенным паком, чел.')
             }
             else {
                 await (nameMe = ' ')
             }
 
-            if (SemenTr === true) {
+            if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Пойдём курить расширенным паком, Semen.')
             }
             else {
                 await (nameSemen = ' ')
             }
 
-            if (AntTr === true) {
+            if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Пойдём курить расширенным паком, Антон!')
             }
             else {
                 await (nameAnt = ' ')
             }
 
-            if (IlTr === true) {
+            if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Пойдём курить расширенным паком, Илья.')
             }
             else {
                 await (nameIl = ' ')
             }
 
-            if (DTr === true) {
+            if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, погнали курить.')
             }
             else {
                 await (nameD = ' ')
             }
 
-            if (DimaTr === true) {
+            if (localStorage.getItem('DimaTr') === 'true') {
                 await bot.sendMessage(Dima, 'Дима, погнали курить.')
             }
             else {
@@ -253,49 +271,49 @@ const start = () => {
         // Курение все вместе
         if (data === 'all'){
 
-            if (MeTr === true) {
+            if (localStorage.getItem('MeTr') === 'true') {
                 await bot.sendMessage(Me, 'Идём курить все нахуй')
             }
             else {
                 await (nameMe = ' ')
             }
 
-            if (SemenTr === true) {
+            if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Идём курить все нахуй')
             }
             else {
                 await (nameSemen = ' ')
             }
 
-            if (AntTr === true) {
+            if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Идём курить все нахуй, Антон!')
             }
             else {
                 await (nameAnt = ' ')
             }
 
-            if (IlTr === true) {
+            if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Идём курить все нахуй')
             }
             else {
                 await (nameIl = ' ')
             }
 
-            if (DTr === true) {
+            if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, погнали курить. Все вместе!')
             }
             else {
                 await (nameD = ' ')
             }
 
-            if (DimaTr === true) {
+            if (localStorage.getItem('DimaTr') === 'true') {
                 await bot.sendMessage(Dima, 'Дима, погнали курить. Все вместе!')
             }
             else {
                 await (nameDima = ' ')
             }
 
-            if (AnTr === true) {
+            if (localStorage.getItem('AnTr') === 'true') {
                 await bot.sendMessage(An, 'Андрюша, погнали курить.')
             }
             else {
@@ -308,42 +326,42 @@ const start = () => {
         // обед
         if (data === 'ob'){
 
-            if (MeTr === true) {
+            if (localStorage.getItem('MeTr') === 'true') {
                 await bot.sendMessage(Me, 'Ушли на обед')
             }
             else {
                 await (nameMe = ' ')
             }
 
-            if (SemenTr === true) {
+            if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Идём всасывать еду, Сёма')
             }
             else {
                 await (nameSemen = ' ')
             }
 
-            if (AntTr === true) {
+            if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Идём на обед, Антон!')
             }
             else {
                 await (nameAnt = ' ')
             }
 
-            if (IlTr === true) {
+            if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Идём на обед!')
             }
             else {
                 await (nameIl = ' ')
             }
 
-            if (DTr === true) {
+            if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, идём на обед.')
             }
             else {
                 await (nameD = ' ')
             }
 
-            if (AnTr === true) {
+            if (localStorage.getItem('AnTr') === 'true') {
                 await bot.sendMessage(An, 'Андрюша, погнали на обед.')
             }
             else {
@@ -357,28 +375,28 @@ const start = () => {
         // Подтяг
         if (data === 'pdg'){
 
-            if (MeTr === true) {
+            if (localStorage.getItem('MeTr') === 'true') {
                 await bot.sendMessage(Me, 'Подтяг')
             }
             else {
                 await (nameMe = ' ')
             }
 
-            if (SemenTr === true) {
+            if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Давай, пойдём накачаем твои хиленькие ручки')
             }
             else {
                 await (nameSemen = ' ')
             }
 
-            if (AntTr === true) {
+            if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Подтяг!')
             }
             else {
                 await (nameAnt = ' ')
             }
 
-            if (IlTr === true) {
+            if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Подтяг!')
             }
             else {
@@ -386,7 +404,7 @@ const start = () => {
             }
 
 
-            if (AnTr === true) {
+            if (localStorage.getItem('AnTr') === 'true') {
                 await bot.sendMessage(An,'Подтяг?')
             }
             else {
@@ -413,52 +431,65 @@ const start = () => {
 
         }
 
+        if (data === 'Vse'){
+
+            await localStorage.setItem('MeTr', true);
+            await localStorage.setItem('SemenTr', true);
+            await localStorage.setItem('DTr', true);
+            await localStorage.setItem('AnTr', true);
+            await localStorage.setItem('DimaTr', true);
+            await localStorage.setItem('AntTr', true);
+            await localStorage.setItem('IlTr', true);
+            await bot.sendMessage(chatId,'Все на месте, спортсмены! 📢')
+
+        }
+
         if (data === 'P'){
 
             await bot.sendMessage(chatId,'Паши сегодня нет в офисе')
-            return (MeTr = false)
+            return localStorage.setItem('MeTr', false);
 
         }
 
         if (data === 'S'){
 
             await bot.sendMessage(chatId,'Семёна сегодня нет в офисе')
-            return (SemenTr = false)
+            return localStorage.setItem('SemenTr', false);
 
         }
 
         if (data === 'D'){
 
             await bot.sendMessage(chatId,'Дани сегодня нет в офисе')
-            return (DTr = false)
+            return localStorage.setItem('DTr', false);
 
         }
 
         if (data === 'An'){
 
             await bot.sendMessage(chatId,'Андрея сегодня нет в офисе')
-            return (AnTr = false)
+            return localStorage.setItem('AnTr', false);
 
         }
 
         if (data === 'Di'){
 
             await bot.sendMessage(chatId,'Димы сегодня нет в офисе')
-            return (DimaTr = false)
+            return localStorage.setItem('DimaTr', false);
 
         }
 
         if (data === 'Ant'){
 
             await bot.sendMessage(chatId,'Антона сегодня нет в офисе')
-            return (AntTr = false)
+            return localStorage.setItem('AntTr', false);
 
         }
 
         if (data === 'I'){
 
             await bot.sendMessage(chatId,'Ильи сегодня нет в офисе')
-            return (IlTr = false)
+            return localStorage.setItem('IlTr', false);
 
         }
 

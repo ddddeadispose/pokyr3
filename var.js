@@ -17,10 +17,11 @@
      netOptions : {
         reply_markup: JSON.stringify({
             inline_keyboard: [
-                [{text: 'Паши', callback_data: 'P'}, {text: 'Семёна', callback_data: 'S'}],
-                [{text: 'Дани', callback_data: 'D'}, {text: 'Андрея', callback_data: 'An'}],
-                [{text: 'Димы', callback_data: 'Di'}, {text: 'Ильи', callback_data: 'I'}],
-                [{text: 'Антона', callback_data: 'Ant'}],
+                [{text: 'Паши 😎', callback_data: 'P'}, {text: 'Семёна 🥸', callback_data: 'S'}],
+                [{text: 'Дани 🤔', callback_data: 'D'}, {text: 'Андрея 🏋️', callback_data: 'An'}],
+                [{text: 'Димы 😶‍🌫️', callback_data: 'Di'}, {text: 'Ильи 🇺🇸', callback_data: 'I'}],
+                [{text: 'Антона 🤓', callback_data: 'Ant'}],
+                [{text: 'Все на месте 📢', callback_data: 'Vse'}],
             ]
         })
     },
