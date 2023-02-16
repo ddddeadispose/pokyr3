@@ -124,7 +124,7 @@ const start = () => {
 
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
-            let cit = fs.readFileSync('../cit.txt', 'utf8').split('\','); // Ссылка на цитатник
+            let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
             return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * cit.length)])
 
         }
@@ -137,7 +137,7 @@ const start = () => {
                 citf = match[2].substring(1);
 
                 fs.writeFileSync(
-                    "../cit.txt",
+                    "cit.txt",
                     "\n" + citf + '\',',
                     { encoding: "utf-8", flag: "a" }
                 );
