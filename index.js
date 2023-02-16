@@ -52,15 +52,16 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.77 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.78 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.77 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.78 | 16.02.23 | Добавлено и исправлено: ')
             await  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер \n' +
                 'Чтобы сохранить цитату, напиши: "/regcit и через пробел ебани смешной прикол"')
+            await bot.sendMessage(chatId,'Добавлена комманда /backup, чтобы посмотреть все цитаты')
             return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда приходилось заново отмечать тех, кого нет в офисе.')
 
 
@@ -123,6 +124,7 @@ const start = () => {
 
         }
 
+        //Рандомная цитата
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
             let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
@@ -130,6 +132,13 @@ const start = () => {
 
         }
 
+        if (text === '/backup' || text === '/backup@Pokyr_Casino_Bot'){
+
+            return  bot.sendDocument(chatId, 'cit.txt')
+
+        }
+
+        //Запись цитаты
         if (text === '/regcit' || text === '/regcit@Pokyr_Casino_Bot'){
 
             bot.onText(/(regcit)(.+)/, (msg, match) => {
