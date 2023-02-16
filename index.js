@@ -131,7 +131,7 @@ const start = () => {
 
         }
 
-        if (text === '/regcit' || text === '/random@Pokyr_Casino_Bot'){
+        if (text === '/regcit' || text === '/regcit@Pokyr_Casino_Bot'){
 
             bot.onText(/(regcit)(.+)/, (msg, match) => {
                 const chatId = msg.chat.id;
