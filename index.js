@@ -27,10 +27,7 @@ let Il = 472281105; let nameIl = ' @Milk_Daddy'; IlTr = true; // Илья
 
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
-let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
 let citf = ''; // Переменная для записи цитат
-
-
 
 const start = () => {
 
@@ -127,6 +124,7 @@ const start = () => {
 
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
+            let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
             return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * cit.length)])
 
         }
@@ -153,10 +151,6 @@ const start = () => {
         }
 
     })
-
-
-
-
 
 
     bot.on('callback_query', async msg => {
