@@ -42,6 +42,7 @@ const start = () => {
 
         if (text === '/test'){
 
+            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' тест')
             return bot.sendMessage(chatId,localStorage.getItem('MeTr') +
                 localStorage.getItem('SemenTr') +
                 localStorage.getItem('DTr') +
@@ -67,19 +68,18 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8.2 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8.2 | 16.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
                 'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
-            await  bot.sendMessage(chatId,'Добавлена возможность динамически добавлять цитаты на сервер \n' +
-                'Чтобы сохранить цитату, напиши: "/regcit и через пробел ебани смешной прикол"')
             await bot.sendMessage(chatId,'Добавлена комманда /backup, чтобы посмотреть все цитаты.')
-            return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда приходилось заново отмечать тех, кого нет в офисе.')
+            return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда добавлялось несколько цитат.' +
+                'Допилена функция до ума "нет офисе"')
 
 
         }
@@ -118,14 +118,14 @@ const start = () => {
             if (chatId === Dima){
 
                 await localStorage.setItem('DimaTr', true);
-                await (nameDima = '@DmitriyBagaev')
+                await (nameDima = ' @DmitriyBagaev')
 
             }
 
             if (chatId === Ant){
 
                 await localStorage.setItem('AntTr', true);
-                await (nameAnt = '@antnmorozov')
+                await (nameAnt = ' @antnmorozov')
 
             }
 
@@ -155,27 +155,23 @@ const start = () => {
 
         }
 
-        //Запись цитаты
-        if (text === '/regcit' || text === '/regcit@Pokyr_Casino_Bot'){
+    })
 
-            bot.onText(/(regcit)(.+)/, (msg, match) => {
+    //Запись цитаты
+    bot.onText(/(regcit)(.+)/, (msg, match) => {
 
-                const chatId = msg.chat.id;
-                citf = match[2].substring(1);
+        const chatId = msg.chat.id;
+        citf = match[2].substring(1);
 
-                fs.writeFileSync(
-                    "cit.txt",
-                    "\n" + citf + '\',',
-                    { encoding: "utf-8", flag: "a" }
-                );
+        fs.writeFileSync(
+            "cit.txt",
+            "\n" + citf + '\',',
+            { encoding: "utf-8", flag: "a" }
+        );
 
-                return bot.sendMessage(chatId, 'Записано: ' + citf);
+        bot.sendMessage(chatId, 'Записано: ' + citf);
 
-                bot.removeTextListener(msg, match);
-
-            })
-
-        }
+        bot.removeTextListener(msg, match);
 
     })
 
@@ -440,6 +436,14 @@ const start = () => {
             await localStorage.setItem('DimaTr', true);
             await localStorage.setItem('AntTr', true);
             await localStorage.setItem('IlTr', true);
+            await (nameMe = ' @b2b_daddy');
+            await (nameSemen = ' @Grafico_Sogly');
+            await (nameAn = ' @akapenkin');
+            await (nameD = ' @Axtra4an');
+            await (nameDima = ' @DmitriyBagaev');
+            await (nameAnt = ' @antnmorozov');
+            await (nameIl = ' @Milk_Daddy');
+
             await bot.sendMessage(chatId,'Все на месте, спортсмены! 📢')
 
         }
