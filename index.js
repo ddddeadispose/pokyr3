@@ -43,6 +43,7 @@ const start = () => {
         if (text === '/test'){
 
             await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' тест')
+
             return bot.sendMessage(chatId,localStorage.getItem('MeTr') +
                 localStorage.getItem('SemenTr') +
                 localStorage.getItem('DTr') +
@@ -68,18 +69,18 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8.2 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8.3 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8.2 | 16.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8.3 | 17.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'Теперь видно, кто вызывает на покур!')
             await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
                 'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
-            await bot.sendMessage(chatId,'Добавлена комманда /backup, чтобы посмотреть все цитаты.')
-            return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат сразу, когда добавлялось несколько цитат.' +
-                ' Допилена функция до ума "нет офисе"')
+            return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда добавлялось сразу несколько.' +
+                ' Допилена функция до ума "нет в офисе"')
 
 
         }
@@ -179,6 +180,17 @@ const start = () => {
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
+        let userId = msg.from.id;
+        let zovname = ''; // Переменная записи зовущего
+
+        // Проверка по юзер ид кто зовёт
+        if (userId === 220815377) {zovname = 'Паши'}
+        if (userId === 60588441) {zovname = 'Семёна'}
+        if (userId === 462415609) {zovname = 'Дани'}
+        if (userId === 314197836) {zovname = 'Андрея'}
+        if (userId === 230680864) {zovname = 'Димы'}
+        if (userId === 275234023) {zovname = 'Антона'}
+        if (userId === 472281105) {zovname = 'Ильи'}
 
         // Ниже процесс проверки присутствия и тэг + оповещение в лс
         // Курение стандартным паком
@@ -212,6 +224,7 @@ const start = () => {
                 await (nameIl = ' ')
             }
 
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
 
         }
@@ -260,6 +273,7 @@ const start = () => {
                 await (nameDima = ' ')
             }
 
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
 
 
@@ -316,6 +330,7 @@ const start = () => {
                 await (nameAn = ' ')
             }
 
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
 
         }
@@ -364,6 +379,7 @@ const start = () => {
                 await (nameAn = ' ')
             }
 
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
 
 
@@ -407,6 +423,7 @@ const start = () => {
                 await (nameAn = ' ')
             }
 
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
 
 
@@ -420,6 +437,7 @@ const start = () => {
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
+        let userId = msg.from.id;
 
         if (data === 'net'){
 
@@ -443,59 +461,67 @@ const start = () => {
             await (nameDima = ' @DmitriyBagaev');
             await (nameAnt = ' @antnmorozov');
             await (nameIl = ' @Milk_Daddy');
-
+            await console.log(userId);
             await bot.sendMessage(chatId,'Все на месте, спортсмены! 📢')
 
         }
 
         if (data === 'P'){
 
-            await bot.sendMessage(chatId,'Паши сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Паши сегодня нет в офисе');
             return localStorage.setItem('MeTr', false);
 
         }
 
         if (data === 'S'){
 
-            await bot.sendMessage(chatId,'Семёна сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Семёна сегодня нет в офисе');
             return localStorage.setItem('SemenTr', false);
 
         }
 
         if (data === 'D'){
 
-            await bot.sendMessage(chatId,'Дани сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Дани сегодня нет в офисе');
             return localStorage.setItem('DTr', false);
 
         }
 
         if (data === 'An'){
 
-            await bot.sendMessage(chatId,'Андрея сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Андрея сегодня нет в офисе');
             return localStorage.setItem('AnTr', false);
 
         }
 
         if (data === 'Di'){
 
-            await bot.sendMessage(chatId,'Димы сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Димы сегодня нет в офисе');
             return localStorage.setItem('DimaTr', false);
 
         }
 
         if (data === 'Ant'){
 
-            await bot.sendMessage(chatId,'Антона сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Антона сегодня нет в офисе');
             return localStorage.setItem('AntTr', false);
 
         }
 
         if (data === 'I'){
 
-            await bot.sendMessage(chatId,'Ильи сегодня нет в офисе')
+            await console.log(userId);
+            await bot.sendMessage(chatId,'Ильи сегодня нет в офисе');
             return localStorage.setItem('IlTr', false);
 
         }
+
 
 
     })

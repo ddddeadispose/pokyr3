@@ -23,6 +23,7 @@
                 [{text: 'Антона 🤓', callback_data: 'Ant'}],
                 [{text: 'Все на месте 📢', callback_data: 'Vse'}],
             ]
+
         })
     },
 
