@@ -20,8 +20,8 @@
                 [{text: 'Паши 😎', callback_data: 'P'}, {text: 'Семёна 🥸', callback_data: 'S'}],
                 [{text: 'Дани 🤔', callback_data: 'D'}, {text: 'Андрея 🏋️', callback_data: 'An'}],
                 [{text: 'Димы 😶‍🌫️', callback_data: 'Di'}, {text: 'Ильи 🇺🇸', callback_data: 'I'}],
-                [{text: 'Антона 🤓', callback_data: 'Ant'}],
-                [{text: 'Все на месте 📢', callback_data: 'Vse'}],
+                [{text: 'Антона 🤓', callback_data: 'Ant'}, {text: 'Все есть 📢', callback_data: 'Vse'}],
+                [{text: '◀️ Назад', callback_data: 'Nazad'}],
             ]
 
         })

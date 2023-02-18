@@ -69,13 +69,13 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8.3 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8.4 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8.3 | 17.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8.4 | 18.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'Теперь видно, кто вызывает на покур!')
             await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
                 'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
@@ -437,11 +437,20 @@ const start = () => {
     bot.on('callback_query', async msg => {
         const data = msg.data;
         const chatId = msg.message.chat.id;
+        const msgid = msg.message.message_id;
         let userId = msg.from.id;
 
         if (data === 'net'){
 
+            await bot.deleteMessage(chatId, msgid);
             return bot.sendMessage(chatId,'Кого нет?', netOptions)
+
+        }
+
+        if (data === 'Nazad'){
+
+            await bot.deleteMessage(chatId, msgid);
+            return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
 
         }
 
