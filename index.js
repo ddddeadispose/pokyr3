@@ -42,15 +42,13 @@ const start = () => {
 
         if (text === '/test'){
 
-            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' тест')
-
-            return bot.sendMessage(chatId,localStorage.getItem('MeTr') +
-                localStorage.getItem('SemenTr') +
-                localStorage.getItem('DTr') +
-                localStorage.getItem('AnTr') +
-                localStorage.getItem('DimaTr') +
-                localStorage.getItem('AntTr') +
-                localStorage.getItem('IlTr'))
+            return bot.sendMessage(chatId,'Паша: ' + localStorage.getItem('MeTr') +
+                'Семён: ' + localStorage.getItem('SemenTr') +
+                'Даня: ' + localStorage.getItem('DTr') +
+                'Андрей: ' + localStorage.getItem('AnTr') +
+                'Дима: ' + localStorage.getItem('DimaTr') +
+                'Антон: ' + localStorage.getItem('AntTr') +
+                'Илья: ' + localStorage.getItem('IlTr'))
 
         }
 
@@ -69,13 +67,13 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8.4 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8.5 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8.4 | 18.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8.5 | 24.02.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'Теперь видно, кто вызывает на покур!')
             await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
                 'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
