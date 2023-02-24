@@ -43,12 +43,12 @@ const start = () => {
         if (text === '/test'){
 
             return bot.sendMessage(chatId,'Паша: ' + localStorage.getItem('MeTr') +
-                'Семён: ' + localStorage.getItem('SemenTr') +
-                'Даня: ' + localStorage.getItem('DTr') +
-                'Андрей: ' + localStorage.getItem('AnTr') +
-                'Дима: ' + localStorage.getItem('DimaTr') +
-                'Антон: ' + localStorage.getItem('AntTr') +
-                'Илья: ' + localStorage.getItem('IlTr'))
+                '. Семён: ' + localStorage.getItem('SemenTr') +
+                '. Даня: ' + localStorage.getItem('DTr') +
+                '. Андрей: ' + localStorage.getItem('AnTr') +
+                '. Дима: ' + localStorage.getItem('DimaTr') +
+                '. Антон: ' + localStorage.getItem('AntTr') +
+                '. Илья: ' + localStorage.getItem('IlTr'))
 
         }
 
