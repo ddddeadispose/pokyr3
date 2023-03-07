@@ -5,7 +5,7 @@ const CronJob = require('cron').CronJob;
 const fs = require("fs");
 let LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
-const WebAppUrl = 'http://192.168.1.112/';
+const WebAppUrl = 'https://this-casino.ru/';
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
