@@ -5,6 +5,7 @@ const CronJob = require('cron').CronJob;
 const fs = require("fs");
 let LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
+const WebAppUrl = 'http://192.168.1.112/';
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -17,8 +18,6 @@ const job = new CronJob(
     true,
     'Europe/Moscow'
 );
-
-
 
 // Объявление переменных людей
 let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
@@ -52,6 +51,20 @@ const start = () => {
 
         }
 
+        if (text === '/test_tag'){
+
+            await bot.sendMessage(chatId,'Меню',{
+
+                reply_markup: {
+                    keyboard: [
+                        [{text: 'А', web_app:{url: WebAppUrl}}],
+                    ]
+                }
+
+            })
+
+        }
+
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
 
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
@@ -67,13 +80,13 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8.5 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, 'Версия бота: 0.8.6 beta Debian 185.90.103.104')
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8.5 | 24.02.23 | Добавлено и исправлено: ')
+            await bot.sendMessage(chatId,'version 0.8.6 | 7.03.23 | Добавлено и исправлено: ')
             await bot.sendMessage(chatId,'Теперь видно, кто вызывает на покур!')
             await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
                 'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
