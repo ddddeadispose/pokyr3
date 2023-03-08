@@ -7,12 +7,9 @@ const os = require('os')
 let LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
 const WebAppUrl = 'https://this-casino.ru/';
-const express = require('express');
-const cors = require('cors');
-const app = express();
+const vers = require('./src/msgs.js'); //запрос переменных с текстом
+const upd = require('./src/msgs.js');
 
-app.use(express.json());
-app.use(cors());
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -46,7 +43,7 @@ const start = () => {
         const chatId = msg.chat.id;
         const data = msg.data;
 
-        if (text === '/test'){
+        if (text === '/test'){ // Вывод кто есть в офисе, а кого нет
 
             return bot.sendMessage(chatId,'Паша: ' + localStorage.getItem('MeTr') +
                 '. Семён: ' + localStorage.getItem('SemenTr') +
@@ -58,7 +55,7 @@ const start = () => {
 
         }
 
-        if (text === '/test_tag'){
+        if (text === '/test_tag'){ // Не доделанная веб хуйня
 
             await bot.sendMessage(chatId,'Меню',{
 
@@ -72,7 +69,7 @@ const start = () => {
 
         }
 
-        if (text === '/server@Pokyr_Casino_Bot' || text === '/server'){
+        if (text === '/server@Pokyr_Casino_Bot' || text === '/server'){ // Инфа о сервере
 
             return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\nВерсия ОС: ' + os.version() + '\n' + os.machine() + '\nПлатформа: ' + os.platform() + '\nАптайм: ' + (Math.round(os.uptime()/3600) + ' Часа'))
 
@@ -94,19 +91,13 @@ const start = () => {
 
         if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
 
-            return bot.sendMessage(chatId, 'Версия бота: 0.8.6 beta Debian 185.90.103.104')
+            return bot.sendMessage(chatId, vers)
 
         }
 
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
-            await bot.sendMessage(chatId,'version 0.8.6 | 7.03.23 | Добавлено и исправлено: ')
-            await bot.sendMessage(chatId,'Теперь видно, кто вызывает на покур!')
-            await bot.sendMessage(chatId,'Доделана функция "Нет в офисе". Теперь не нужно каждый день отмечать, кого нет. Значения отсутствующих хранятся бесконечное количество времени.' +
-                'Теперь если ты в отпуске, можешь не париться о том, что тебя будет тэгать. Ну если я ничего не сломаю в новых обновлениях)')
-            return  bot.sendMessage(chatId,'Исправлена ошибка с добавлением цитат, когда добавлялось сразу несколько.' +
-                ' Допилена функция до ума "нет в офисе"')
-
+            return  bot.sendMessage(chatId, upd)
 
         }
 
