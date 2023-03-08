@@ -56,7 +56,7 @@ const start = () => {
             await bot.sendMessage(chatId,'Меню',{
 
                 reply_markup: {
-                    keyboard: [
+                    inline_keyboard: [
                         [{text: 'Покур', web_app:{url: WebAppUrl}}],
                     ]
                 }
