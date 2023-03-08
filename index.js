@@ -3,9 +3,16 @@ const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
 const CronJob = require('cron').CronJob;
 const fs = require("fs");
+const os = require('os')
 let LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
 const WebAppUrl = 'https://this-casino.ru/';
+const express = require('express');
+const cors = require('cors');
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -64,6 +71,13 @@ const start = () => {
             })
 
         }
+
+        if (text === '/server@Pokyr_Casino_Bot' || text === '/server'){
+
+            return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\n Версия ОС:' + os.version() + '\n' + os.machine() + '\n Аптайм:' + (Math.round(os.uptime()/3600) + ' Часа'))
+
+        }
+
 
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
 
@@ -442,7 +456,6 @@ const start = () => {
 
 
     })
-
 
     //Вызов кнопок кого нет и изменения в переменных
     bot.on('callback_query', async msg => {
