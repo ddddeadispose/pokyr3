@@ -74,7 +74,7 @@ const start = () => {
 
         if (text === '/server@Pokyr_Casino_Bot' || text === '/server'){
 
-            return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\nВерсия ОС: ' + os.version() + '\n' + os.machine() + '\nАптайм: ' + (Math.round(os.uptime()/3600) + ' Часа'))
+            return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\nВерсия ОС: ' + os.version() + '\n' + os.machine() + '\nПлатформа: ' + os.platform() + '\nАптайм: ' + (Math.round(os.uptime()/3600) + ' Часа'))
 
         }
 
