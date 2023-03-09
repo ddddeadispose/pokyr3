@@ -9,7 +9,7 @@ localStorage = new LocalStorage('./scratch');
 const WebAppUrl = 'https://this-casino.ru/';
 const vers = require('./src/msgs.js'); //запрос переменных с текстом
 const upd = require('./src/msgs.js');
-
+const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -31,8 +31,6 @@ let An = 314197836; let nameAn = ' @akapenkin'; // Анрей
 let Dima = 230680864; let nameDima = ' @DmitriyBagaev';  // Дима
 let Ant = 275234023; let nameAnt = ' @antnmorozov';  // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
-
-const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
 let citf = ''; // Переменная для записи цитат
 
