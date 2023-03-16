@@ -11,7 +11,7 @@ const vers = require('./src/msgs.js'); //запрос переменных с т
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
-import { ChatGPTAPI } from 'chatgpt';
+const { ChatGPTAPI } = require ('chatgpt');
 
 const api = new ChatGPTAPI({
     apiKey: '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',
