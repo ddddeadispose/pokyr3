@@ -11,6 +11,16 @@ const vers = require('./src/msgs.js'); //запрос переменных с т
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 
+import { ChatGPTAPI } from 'chatgpt';
+
+const api = new ChatGPTAPI({
+    apiKey: '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',
+    completionParams: {
+        temperature: 0.5,
+        top_p: 0.8
+    }
+})
+
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
     '00 9 * * *',
@@ -190,6 +200,25 @@ const start = () => {
 
     })
 
+    bot.onText(/гпт (.+)/, async (msg, match) => {
+
+        let userId = msg.from.id;
+
+        let ms = match[1];
+
+        console.log(ms);
+
+        async function example() {
+
+            const res = await api.sendMessage(ms)
+            console.log(res.text)
+            bot.sendMessage(userId, res.text);
+
+        }
+
+        example();
+
+    });
 
     bot.on('callback_query', async msg => {
         const data = msg.data;
