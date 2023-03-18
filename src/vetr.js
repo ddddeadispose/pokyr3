@@ -37,13 +37,13 @@ async function vetr(){
 
     }
 
-    if (results > 5.4 && results <= 7.9){
+    if (results > 5.4 && results <= 7){
 
         strv = 'ощутимое ветрие';
 
     }
 
-    if (results > 7.9 && results <= 10.7){
+    if (results > 7 && results <= 10.7){
 
         strv = 'жесткое ветрие';
 
