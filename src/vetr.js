@@ -25,25 +25,25 @@ async function vetr(){
     results = results.replace(/ м\/с/g, "");
     console.log(results + resultn);
 
-    if (results < 3.3){
+    if (results <= 3.3){
 
         strv = 'классическое безветрие';
 
     }
 
-    if (results > 3.3 && results < 5.4){
+    if (results > 3.3 && results <= 5.4){
 
         strv = 'слабое ветрие';
 
     }
 
-    if (results > 5.4 && results < 7.9){
+    if (results > 5.4 && results <= 7.9){
 
         strv = 'ощутимое ветрие';
 
     }
 
-    if (results > 7.9 && results < 10.7){
+    if (results > 7.9 && results <= 10.7){
 
         strv = 'жесткое ветрие';
 
