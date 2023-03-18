@@ -6,7 +6,7 @@ async function vetr(){
     let results = '';
     let resultn = '';
     let strv = '';
-    let strr = 'Лучше курить:';
+    let strr = 'Лучше курить';
 
     let spots = [' у второго входа', ' за перегородкой', ' у подъезда', ' у чапаева 42А', ' у газа', ' у R&D'];
 
