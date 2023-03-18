@@ -11,6 +11,7 @@ const WebAppUrl = 'https://this-casino.ru/';
 const vers = require('./src/msgs.js'); //запрос переменных с текстом
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
+const {vetr} = require('./src/vetr.js');
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -238,7 +239,7 @@ const start = () => {
                 await (nameIl = ' ')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
 
         }
@@ -287,7 +288,7 @@ const start = () => {
                 await (nameDima = ' ')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
 
 
@@ -344,7 +345,7 @@ const start = () => {
                 await (nameAn = ' ')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
+            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
 
         }
@@ -440,9 +441,7 @@ const start = () => {
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
             return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
 
-
         }
-
 
     })
 
