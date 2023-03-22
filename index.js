@@ -215,32 +215,32 @@ const start = () => {
                 await bot.sendMessage(Me, 'Пойдём курить стандартным паком, чел.')
             }
             else {
-                await (nameMe = ' ')
+                await (nameMe = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Пойдём курить стандартным паком, Semen.')
             }
             else {
-                await (nameSemen = ' ')
+                await (nameSemen = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Пойдём курить стандартным паком, Антон!')
             }
             else {
-                await (nameAnt = ' ')
+                await (nameAnt = '')
             }
 
             if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Пойдём курить стандартным паком, Илья.')
             }
             else {
-                await (nameIl = ' ')
+                await (nameIl = '')
             }
 
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
+            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
 
         }
         // Курение расширенным паком
@@ -250,46 +250,46 @@ const start = () => {
                 await bot.sendMessage(Me, 'Пойдём курить расширенным паком, чел.')
             }
             else {
-                await (nameMe = ' ')
+                await (nameMe = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Пойдём курить расширенным паком, Semen.')
             }
             else {
-                await (nameSemen = ' ')
+                await (nameSemen = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Пойдём курить расширенным паком, Антон!')
             }
             else {
-                await (nameAnt = ' ')
+                await (nameAnt = '')
             }
 
             if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Пойдём курить расширенным паком, Илья.')
             }
             else {
-                await (nameIl = ' ')
+                await (nameIl = '')
             }
 
             if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, погнали курить.')
             }
             else {
-                await (nameD = ' ')
+                await (nameD = '')
             }
 
             if (localStorage.getItem('DimaTr') === 'true') {
                 await bot.sendMessage(Dima, 'Дима, погнали курить.')
             }
             else {
-                await (nameDima = ' ')
+                await (nameDima = '')
             }
 
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
+            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
 
 
         }
@@ -300,53 +300,53 @@ const start = () => {
                 await bot.sendMessage(Me, 'Идём курить все нахуй')
             }
             else {
-                await (nameMe = ' ')
+                await (nameMe = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Идём курить все нахуй')
             }
             else {
-                await (nameSemen = ' ')
+                await (nameSemen = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Идём курить все нахуй, Антон!')
             }
             else {
-                await (nameAnt = ' ')
+                await (nameAnt = '')
             }
 
             if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Идём курить все нахуй')
             }
             else {
-                await (nameIl = ' ')
+                await (nameIl = '')
             }
 
             if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, погнали курить. Все вместе!')
             }
             else {
-                await (nameD = ' ')
+                await (nameD = '')
             }
 
             if (localStorage.getItem('DimaTr') === 'true') {
                 await bot.sendMessage(Dima, 'Дима, погнали курить. Все вместе!')
             }
             else {
-                await (nameDima = ' ')
+                await (nameDima = '')
             }
 
             if (localStorage.getItem('AnTr') === 'true') {
                 await bot.sendMessage(An, 'Андрюша, погнали курить.')
             }
             else {
-                await (nameAn = ' ')
+                await (nameAn = '')
             }
 
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
+            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
 
         }
         // обед
@@ -356,46 +356,46 @@ const start = () => {
                 await bot.sendMessage(Me, 'Ушли на обед')
             }
             else {
-                await (nameMe = ' ')
+                await (nameMe = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Идём всасывать еду, Сёма')
             }
             else {
-                await (nameSemen = ' ')
+                await (nameSemen = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Идём на обед, Антон!')
             }
             else {
-                await (nameAnt = ' ')
+                await (nameAnt = '')
             }
 
             if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Идём на обед!')
             }
             else {
-                await (nameIl = ' ')
+                await (nameIl = '')
             }
 
             if (localStorage.getItem('DTr') === 'true') {
                 await bot.sendMessage(D, 'Даня, идём на обед.')
             }
             else {
-                await (nameD = ' ')
+                await (nameD = '')
             }
 
             if (localStorage.getItem('AnTr') === 'true') {
                 await bot.sendMessage(An, 'Андрюша, погнали на обед.')
             }
             else {
-                await (nameAn = ' ')
+                await (nameAn = '')
             }
 
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
-            return bot.sendMessage(chatId, nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
+            await bot.sendMessage(chatId, nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
 
 
         }
@@ -406,28 +406,28 @@ const start = () => {
                 await bot.sendMessage(Me, 'Подтяг')
             }
             else {
-                await (nameMe = ' ')
+                await (nameMe = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
                 await bot.sendMessage(Semen, 'Давай, пойдём накачаем твои хиленькие ручки')
             }
             else {
-                await (nameSemen = ' ')
+                await (nameSemen = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
                 await bot.sendMessage(Ant, 'Подтяг!')
             }
             else {
-                await (nameAnt = ' ')
+                await (nameAnt = '')
             }
 
             if (localStorage.getItem('IlTr') === 'true') {
                 await bot.sendMessage(Il, 'Подтяг!')
             }
             else {
-                await (nameIl = ' ')
+                await (nameIl = '')
             }
 
 
@@ -435,11 +435,11 @@ const start = () => {
                 await bot.sendMessage(An,'Подтяг?')
             }
             else {
-                await (nameAn = ' ')
+                await (nameAn = '')
             }
 
             await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
-            return bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
+            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
 
         }
 
