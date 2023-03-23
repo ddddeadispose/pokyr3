@@ -10,14 +10,14 @@ const os = require('os');
 const LocalStorage = require('node-localstorage').LocalStorage;
 const localStorage = new LocalStorage('./scratch');
 const WebAppUrl = 'https://this-casino.ru/';
-const vers = require('./src/msgs.js'); //запрос переменных с текстом
+//запрос переменных с текстом
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: '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',
+    apiKey: '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',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
@@ -112,7 +112,7 @@ const start = () => {
 
         if (text === '/server@Pokyr_Casino_Bot' || text === '/server'){ // Инфа о сервере
 
-            return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\nВерсия ОС: ' + os.version() + '\n' + os.machine() + '\nПлатформа: ' + os.platform() + '\nАптайм: ' + (Math.round(os.uptime()/3600) + ' Часа'))
+                return bot.sendMessage(chatId, 'Имя хоста: ' + os.hostname() + '\nВерсия ОС: ' + os.version() + '\n' + os.machine() + '\nПлатформа: ' + os.platform() + '\nАптайм: ' + (Math.round(os.uptime()/3600) + ' Часа'))
 
         }
 
@@ -127,12 +127,6 @@ const start = () => {
         if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag'){
 
             return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
-
-        }
-
-        if (text === '/version@Pokyr_Casino_Bot'|| text === '/version'){
-
-            return bot.sendMessage(chatId, vers)
 
         }
 
