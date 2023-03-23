@@ -1,3 +1,5 @@
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url);
 
 const TelegramApi = require('node-telegram-bot-api')
 const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
@@ -12,6 +14,7 @@ const vers = require('./src/msgs.js'); //запрос переменных с т
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 const {vetr} = require('./src/vetr.js');
+import gpt from './src/gpt.mjs';
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -189,6 +192,14 @@ const start = () => {
         bot.sendMessage(chatId, 'Записано: ' + citf);
 
         bot.removeTextListener(msg, match);
+
+    })
+
+    bot.onText(/gpt (.+)/, (msg, match) => {
+        const chatId = msg.chat.id;
+        let ms = match[1];
+
+        gpt();
 
     })
 
