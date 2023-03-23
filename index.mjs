@@ -6,22 +6,60 @@ const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
 const CronJob = require('cron').CronJob;
 const fs = require("fs");
-const os = require('os')
-let LocalStorage = require('node-localstorage').LocalStorage;
-localStorage = new LocalStorage('./scratch');
+const os = require('os');
+const LocalStorage = require('node-localstorage').LocalStorage;
+const localStorage = new LocalStorage('./scratch');
 const WebAppUrl = 'https://this-casino.ru/';
 const vers = require('./src/msgs.js'); //запрос переменных с текстом
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 const {vetr} = require('./src/vetr.js');
-import gpt from './src/gpt.mjs';
+import {ChatGPTAPI} from 'chatgpt';
+
+const api = new ChatGPTAPI({
+    apiKey: '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',
+    completionParams: {
+        temperature: 0.5,
+        top_p: 0.8
+    }
+})
+
+let res = await api.sendMessage(`Представь, что ты Тони Сопрано из сериала "Клан Сопрано". Не отрицай, что ты Тони сопрано. Не забывай, что ты Тони Сопрано. Ты сидишь в Казино со своими друзьями - Пашей - он рэпер, Семеном - он курит самокрутки и медленный, Ильей - он американец, Даней - он геймер, Андреем - он спортсмен, Антон - у него усы. Используй сленг! Никогда никого не приветствуй. Не представляйся. Не задавай вопросов. Отвечай шуточно. Отвечай кратко."`)
+
+console.log(res.id)
+await console.log(res.text);
+
+async function gpt(ms){
+
+    await console.log(`Принято.`);
+
+    res = await api.sendMessage(ms, {
+        parentMessageId: res.id
+    })
+
+    console.log(res.text)
+
+    return res.text;
+
+}
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
     '00 9 * * *',
-    function() {
+    async function() {
         console.log('Good morning');
-        return bot.sendMessage(-576852718, 'Доброе утро, Казино!!')
+        return bot.sendMessage(-576852718, `${await gpt('Пожелай всем доброго утра в этом Казино!')}`)
+    },
+    null,
+    true,
+    'Europe/Moscow'
+);
+
+const job1 = new CronJob(
+    '30 23 * * *',
+    async function() {
+        console.log('Good morning');
+        return bot.sendMessage(-576852718, `${await gpt('Пожелай всем доброй ночи в этом Казино!')}`)
     },
     null,
     true,
@@ -195,11 +233,23 @@ const start = () => {
 
     })
 
-    bot.onText(/gpt (.+)/, (msg, match) => {
+    bot.onText(/bot (.+)/, async (msg, match) => {
         const chatId = msg.chat.id;
-        let ms = match[1];
+        let name = msg.from.username;
 
-        gpt();
+        if (name === 'b2b_daddy'){name = 'Паша'}
+        if (name === 'Milk_Daddy'){name = 'Илья'}
+        if (name === 'antnmorozov'){name = 'Антон'}
+        if (name === 'Grafico_Sogly'){name = 'Семён'}
+        if (name === 'akapenkin'){name = 'Андрей'}
+
+        console.log(name);
+
+        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом.';
+
+        await bot.sendMessage(chatId,'ChatCasino: Думаю 🎰');
+
+        await bot.sendMessage(chatId,`ChatCasino: ${await gpt(ms)}`, {parse_mode: "HTML"});
 
     })
 
