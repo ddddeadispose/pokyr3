@@ -17,7 +17,7 @@ const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: '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',
+    apiKey: 'sk-',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
