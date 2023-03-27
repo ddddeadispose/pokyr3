@@ -89,7 +89,7 @@ async function vetr(){
 
     console.log(strr);
 
-    return `На улице наблюдается ${strv}.\n${strr}.`
+    return `На улице наблюдается ${strv}.\n${strr}`
 
 }
 

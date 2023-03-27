@@ -17,7 +17,7 @@ const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: 'sk-',
+    apiKey: 'sk',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
@@ -65,6 +65,8 @@ const job1 = new CronJob(
     true,
     'Europe/Moscow'
 );
+
+
 
 // Объявление переменных людей
 let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
@@ -188,8 +190,7 @@ const start = () => {
 
             }
 
-            return  bot.sendMessage(chatId,'Здорово, рад тебя видеть! Ну чё, давай о деле поговорим?')
-
+            await  bot.sendMessage(chatId,'Здорово, рад тебя видеть! Ну чё, давай о деле поговорим?')
 
         }
 
@@ -197,13 +198,13 @@ const start = () => {
         if (text === '/random' || text === '/random@Pokyr_Casino_Bot'){
 
             let cit = fs.readFileSync('cit.txt', 'utf8').split('\','); // Ссылка на цитатник
-            return  bot.sendMessage(chatId, cit[Math.floor(Math.random() * cit.length)])
+            await  bot.sendMessage(chatId, cit[Math.floor(Math.random() * cit.length)])
 
         }
 
         if (text === '/backup' || text === '/backup@Pokyr_Casino_Bot'){
 
-            return  bot.sendDocument(chatId, 'cit.txt')
+            await  bot.sendDocument(chatId, 'cit.txt')
 
         }
 
@@ -239,7 +240,7 @@ const start = () => {
 
         console.log(name);
 
-        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом.';
+        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом. Отвечай шуточно.';
 
         await bot.sendMessage(chatId,'ChatCasino: Думаю 🎰');
 
@@ -294,8 +295,7 @@ const start = () => {
                 await (nameIl = '')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + ' курение')
+            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + ' курение')
 
         }
         // Курение расширенным паком
@@ -343,9 +343,7 @@ const start = () => {
                 await (nameDima = '')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
-
+            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
 
         }
         // Курение все вместе
@@ -400,8 +398,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname + '.\n' + await vetr())
-            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
+            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
 
         }
         // обед
@@ -449,9 +446,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
-            await bot.sendMessage(chatId, nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
-
+            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '\n' + nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
 
         }
         // Подтяг
@@ -493,8 +488,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(chatId, 'Уведомление от: ' + zovname)
-            await bot.sendMessage(chatId, nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
+            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
 
         }
 
