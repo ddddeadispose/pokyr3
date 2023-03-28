@@ -78,6 +78,7 @@ let Ant = 275234023; let nameAnt = ' @antnmorozov';  // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 
 let citf = ''; // Переменная для записи цитат
+let counter = 0;
 
 const start = () => {
 
@@ -262,6 +263,9 @@ const start = () => {
         if (userId === 230680864) {zovname = 'Димы'}
         if (userId === 275234023) {zovname = 'Антона'}
         if (userId === 472281105) {zovname = 'Ильи'}
+
+        counter++;
+        console.log('Запросов колбэк:' + counter);
 
         // Ниже процесс проверки присутствия и тэг + оповещение в лс
         // Курение стандартным паком
