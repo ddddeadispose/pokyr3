@@ -16,7 +16,7 @@ const {tagOptions, netOptions, } = require('./var'); // Подгружаем п�
 const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
-/*const api = new ChatGPTAPI({
+const api = new ChatGPTAPI({
     apiKey: 'sk',
     completionParams: {
         temperature: 0.5,
@@ -41,7 +41,7 @@ async function gpt(ms){
 
     return res.text;
 
-}*/
+}
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
