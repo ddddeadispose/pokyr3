@@ -16,7 +16,7 @@ const {tagOptions, netOptions, } = require('./var'); // Подгружаем п�
 const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
-const api = new ChatGPTAPI({
+/*const api = new ChatGPTAPI({
     apiKey: 'sk',
     completionParams: {
         temperature: 0.5,
@@ -41,7 +41,7 @@ async function gpt(ms){
 
     return res.text;
 
-}
+}*/
 
 // Желание доброго утра с помощью модуля Cron
 const job = new CronJob(
@@ -119,7 +119,6 @@ const start = () => {
 
         }
 
-
         if (text === '/start@Pokyr_Casino_Bot' || text === '/start'){
 
             await bot.sendSticker(chatId,'CAACAgIAAxkBAAEHkAlj2-WX-W5KVuWN8Y9P4gL4Z8HW9QACYAADEWApDfEI5RIU0zAsLgQ')
@@ -136,62 +135,6 @@ const start = () => {
         if (text === '/updates'|| text === '/updates@Pokyr_Casino_Bot'){
 
             return  bot.sendMessage(chatId, upd)
-
-        }
-
-        //Проверка на возвращение
-        if (text === 'Бот я вернулся' || text === 'бот я вернулся'){
-
-            if (chatId === Me){
-
-                await localStorage.setItem('MeTr', true);
-                await (nameMe = ' @b2b_daddy')
-
-            }
-
-            if (chatId === Semen){
-
-                await localStorage.setItem('SemenTr', true);
-                await (nameSemen = ' @Grafico_Sogly')
-
-            }
-
-            if (chatId === D){
-
-                await localStorage.setItem('DTr', true);
-                await (nameD = ' @Axtra4an')
-
-            }
-
-            if (chatId === An){
-
-                await localStorage.setItem('AnTr', true);
-                await (nameAn = ' @akapenkin')
-
-            }
-
-            if (chatId === Dima){
-
-                await localStorage.setItem('DimaTr', true);
-                await (nameDima = ' @DmitriyBagaev')
-
-            }
-
-            if (chatId === Ant){
-
-                await localStorage.setItem('AntTr', true);
-                await (nameAnt = ' @antnmorozov')
-
-            }
-
-            if (chatId === Il){
-
-                await localStorage.setItem('IlTr', true);
-                await (nameIl = ' @Milk_Daddy')
-
-            }
-
-            await  bot.sendMessage(chatId,'Здорово, рад тебя видеть! Ну чё, давай о деле поговорим?')
 
         }
 
@@ -543,56 +486,126 @@ const start = () => {
         if (data === 'P'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Паши сегодня нет в офисе');
-            return localStorage.setItem('MeTr', false);
+
+            if (localStorage.getItem('MeTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Паши сегодня нет в офисе');
+                await localStorage.setItem('MeTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Паша есть в офисе');
+                await localStorage.setItem('MeTr', true);
+
+            }
 
         }
 
         if (data === 'S'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Семёна сегодня нет в офисе');
-            return localStorage.setItem('SemenTr', false);
+
+            if (localStorage.getItem('SemenTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Семёна сегодня нет в офисе');
+                await localStorage.setItem('SemenTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Семён есть в офисе');
+                await localStorage.setItem('SemenTr', true);
+
+            }
 
         }
 
         if (data === 'D'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Дани сегодня нет в офисе');
-            return localStorage.setItem('DTr', false);
+
+            if (localStorage.getItem('DTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Дани сегодня нет в офисе');
+                await localStorage.setItem('DTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Даня есть в офисе');
+                await localStorage.setItem('DTr', true);
+
+            }
 
         }
 
         if (data === 'An'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Андрея сегодня нет в офисе');
-            return localStorage.setItem('AnTr', false);
+
+            if (localStorage.getItem('AnTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Андрея сегодня нет в офисе');
+                await localStorage.setItem('AnTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Андрей есть в офисе');
+                await localStorage.setItem('AnTr', true);
+
+            }
 
         }
 
         if (data === 'Di'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Димы сегодня нет в офисе');
-            return localStorage.setItem('DimaTr', false);
+
+            if (localStorage.getItem('DimaTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Димы сегодня нет в офисе');
+                await localStorage.setItem('DimaTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Дима есть в офисе');
+                await localStorage.setItem('DimaTr', true);
+
+            }
 
         }
 
         if (data === 'Ant'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Антона сегодня нет в офисе');
-            return localStorage.setItem('AntTr', false);
+
+            if (localStorage.getItem('AntTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Антона сегодня нет в офисе');
+                await localStorage.setItem('AntTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Антон есть в офисе');
+                await localStorage.setItem('AntTr', true);
+
+            }
 
         }
 
         if (data === 'I'){
 
             await console.log(userId);
-            await bot.sendMessage(chatId,'Ильи сегодня нет в офисе');
-            return localStorage.setItem('IlTr', false);
+
+            if (localStorage.getItem('IlTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Ильи сегодня нет в офисе');
+                await localStorage.setItem('IlTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Илья есть в офисе');
+                await localStorage.setItem('IlTr', true);
+
+            }
 
         }
 
