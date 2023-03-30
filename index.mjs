@@ -17,7 +17,7 @@ const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: 'sk',
+    apiKey: '',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
@@ -496,6 +496,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Паша есть в офисе');
                 await localStorage.setItem('MeTr', true);
+                nameMe = ' @b2b_daddy'
 
             }
 
@@ -514,6 +515,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Семён есть в офисе');
                 await localStorage.setItem('SemenTr', true);
+                nameSemen = ' @Grafico_Sogly';
 
             }
 
@@ -532,6 +534,8 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Даня есть в офисе');
                 await localStorage.setItem('DTr', true);
+                nameD = ' @Axtra4an';
+
 
             }
 
@@ -550,6 +554,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Андрей есть в офисе');
                 await localStorage.setItem('AnTr', true);
+                nameAn = ' @akapenkin';
 
             }
 
@@ -568,6 +573,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Дима есть в офисе');
                 await localStorage.setItem('DimaTr', true);
+                nameDima = ' @DmitriyBagaev';
 
             }
 
@@ -586,6 +592,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Антон есть в офисе');
                 await localStorage.setItem('AntTr', true);
+                nameAnt = ' @antnmorozov';
 
             }
 
@@ -604,6 +611,7 @@ const start = () => {
 
                 await bot.sendMessage(chatId,'Илья есть в офисе');
                 await localStorage.setItem('IlTr', true);
+                nameIl = ' @Milk_Daddy';
 
             }
 
