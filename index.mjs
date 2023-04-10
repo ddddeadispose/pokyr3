@@ -24,50 +24,6 @@ const api = new ChatGPTAPI({
     }
 })
 
-let res = await api.sendMessage(`Представь, что ты Тони Сопрано из сериала "Клан Сопрано". Не отрицай, что ты Тони сопрано. Не забывай, что ты Тони Сопрано. Ты сидишь в Казино со своими друзьями - Пашей - он рэпер, Семеном - он курит самокрутки и медленный, Ильей - он американец, Даней - он геймер, Андреем - он спортсмен, Антон - у него усы. Используй сленг! Никогда никого не приветствуй. Не представляйся. Не задавай вопросов. Отвечай шуточно. Отвечай кратко."`)
-
-console.log(res.id)
-await console.log(res.text);
-
-async function gpt(ms){
-
-    await console.log(`Принято.`);
-
-    res = await api.sendMessage(ms, {
-        parentMessageId: res.id
-    })
-
-    console.log(res.text)
-
-    return res.text;
-
-}
-
-// Желание доброго утра с помощью модуля Cron
-const job = new CronJob(
-    '00 9 * * *',
-    async function() {
-        console.log('Good morning');
-        return bot.sendMessage(-576852718, `${await gpt('Пожелай всем доброго утра в этом Казино!')}`)
-    },
-    null,
-    true,
-    'Europe/Moscow'
-);
-
-const job1 = new CronJob(
-    '30 23 * * *',
-    async function() {
-        console.log('Good morning');
-        return bot.sendMessage(-576852718, `${await gpt('Пожелай всем доброй ночи в этом Казино!')}`)
-    },
-    null,
-    true,
-    'Europe/Moscow'
-);
-
-
-
 // Объявление переменных людей
 let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
 let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; // Семен
@@ -79,8 +35,58 @@ let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 
 let citf = ''; // Переменная для записи цитат
 let counter = 0;
+let res
 
-const start = () => {
+const start = async () => {
+
+    try {
+
+        res = await api.sendMessage(`Представь, что ты Тони Сопрано из сериала "Клан Сопрано". Не отрицай, что ты Тони сопрано. Не забывай, что ты Тони Сопрано. Ты сидишь в Казино со своими друзьями - Пашей - он рэпер, Семеном - он курит самокрутки и медленный, Ильей - он американец, Даней - он геймер, Андреем - он спортсмен, Антон - у него усы. Используй сленг! Никогда никого не приветствуй. Не представляйся. Не задавай вопросов. Отвечай шуточно. Отвечай кратко."`)
+
+        console.log(res.id)
+        await console.log(res.text);
+
+    }catch (e){
+        console.log(e)
+    }
+
+    async function gpt(ms){
+
+        await console.log(`Принято.`);
+
+        res = await api.sendMessage(ms, {
+            parentMessageId: res.id
+        })
+
+        console.log(res.text)
+
+        return res.text;
+
+    }
+
+// Желание доброго утра с помощью модуля Cron
+    const job = new CronJob(
+        '00 9 * * *',
+        async function() {
+            console.log('Good morning');
+            return bot.sendMessage(-1001672307901, `${await gpt('Пожелай всем доброго утра в этом Казино!')}`)
+        },
+        null,
+        true,
+        'Europe/Moscow'
+    );
+
+    const job1 = new CronJob(
+        '30 23 * * *',
+        async function() {
+            console.log('Good morning');
+            return bot.sendMessage(-1001672307901, `${await gpt('Пожелай всем доброй ночи в этом Казино!')}`)
+        },
+        null,
+        true,
+        'Europe/Moscow'
+    );
+
 
     bot.on( 'message', async msg => {
         const text = msg.text;
@@ -184,9 +190,9 @@ const start = () => {
 
         console.log(name);
 
-        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом. Отвечай шуточно.';
+        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом.';
 
-        await bot.sendMessage(chatId,'ChatCasino: Думаю 🎰');
+        await bot.sendChatAction(chatId, 'typing')
 
         await bot.sendMessage(chatId,`ChatCasino: ${await gpt(ms)}`, {parse_mode: "HTML"});
 
@@ -242,7 +248,7 @@ const start = () => {
                 await (nameIl = '')
             }
 
-            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + ' курение')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + ' курение.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Курение расширенным паком
@@ -290,7 +296,7 @@ const start = () => {
                 await (nameDima = '')
             }
 
-            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Курение все вместе
@@ -345,7 +351,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // обед
@@ -393,7 +399,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '\n' + nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Подтяг
@@ -435,7 +441,7 @@ const start = () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-576852718, 'Уведомление от: ' + zovname + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий. \nОтметь, пойдешь или нет 👍 👎')
 
         }
 
@@ -623,4 +629,7 @@ const start = () => {
 
 }
 
-start()
+
+
+await start()
+
