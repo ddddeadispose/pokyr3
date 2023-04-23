@@ -98,10 +98,10 @@ app.post('/web-data', async (req, res) => {
         }
 
         if (req.body.selectedCigarette === null || req.body.selectedCigarette === '🚬'){
-            await bot.sendMessage(220815377, await vetr())
+            await bot.sendMessage(-1001672307901, await vetr())
         }
 
-        await bot.sendMessage(220815377,  names + ' ' + message)
+        await bot.sendMessage(-1001672307901,  names + ' ' + message)
 
         console.log(req.body.selectedEmojis.length)
 
