@@ -52,28 +52,59 @@ app.post('/web-data', async (req, res) => {
     let message = '';
     let names = '';
 
-    if (req.body.selectedCigarette === '🍽'){
-        message = 'пойдём на обед.'
-    }
-    if (req.body.selectedCigarette === null){
-        message = 'пойдём на покур.'
-    }
-    if (req.body.selectedCigarette === '🚬'){
-        message = 'пойдём на покур.'
-    }
-    if (req.body.selectedCigarette === '🫂'){
-        message = 'пойдём на подтяг.'
+    try {
+
+        if (req.body.selectedCigarette === '🍽'){
+            message = 'пойдём на обед.'
+        }
+        if (req.body.selectedCigarette === null){
+            message = 'пойдём на покур.'
+        }
+        if (req.body.selectedCigarette === '🚬'){
+            message = 'пойдём на покур.'
+        }
+        if (req.body.selectedCigarette === '🫂'){
+            message = 'пойдём на подтяг.'
+        }
+
+        for (let i = 0; i < req.body.selectedEmojis.length; i++){
+            names += req.body.selectedEmojis[i]
+
+            switch (req.body.selectedEmojis[i]){
+                case ' @b2b_daddy':
+                    await bot.sendMessage(Me, 'Паша ' + message)
+                    break
+                case ' @Grafico_Sogly':
+                    await bot.sendMessage(Semen, 'Сёма ' + message)
+                    break
+                case ' @Axtra4an':
+                    await bot.sendMessage(D, 'Даня ' + message)
+                    break
+                case ' @akapenkin':
+                    await bot.sendMessage(An, 'Андрей ' + message)
+                    break
+                case ' @DmitriyBagaev':
+                    await bot.sendMessage(Dima, 'Дима ' + message)
+                    break
+                case ' @antnmorozov':
+                    await bot.sendMessage(Ant, 'Антоша ' + message)
+                    break
+                case ' @Milk_Daddy':
+                    await bot.sendMessage(Il, 'Илья ' + message)
+                    break
+            }
+        }
+
+        await bot.sendMessage(-1001672307901, await vetr() + '\n' + names + ' ' + message)
+
+        console.log(req.body.selectedEmojis.length)
+
+        return res.status(200).json({});
+
+    }catch (e){
+        console.log(e)
     }
 
-    for (let i = 0; i < req.body.selectedEmojis.length; i++){
-        names += req.body.selectedEmojis[i]
-    }
-
-    await bot.sendMessage(220815377, names + ' ' + message)
-
-    console.log(req.body.selectedEmojis.length)
-
-    return res.status(200).json({});
 })
 
 const PORT = 5000;
@@ -138,9 +169,6 @@ const start = async () => {
         true,
         'Europe/Moscow'
     );
-
-
-
 
     bot.on( 'message', async msg => {
         const text = msg.text;
