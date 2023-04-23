@@ -72,7 +72,7 @@ app.post('/web-data', async (req, res) => {
         for (let i = 0; i < req.body.selectedEmojis.length; i++){
             names += req.body.selectedEmojis[i]
 
-            /*switch (req.body.selectedEmojis[i]){
+            switch (req.body.selectedEmojis[i]){
                 case ' @b2b_daddy':
                     await bot.sendMessage(Me, 'Паша ' + message)
                     break
@@ -94,7 +94,7 @@ app.post('/web-data', async (req, res) => {
                 case ' @Milk_Daddy':
                     await bot.sendMessage(Il, 'Илья ' + message)
                     break
-            }*/
+            }
         }
 
         if (req.body.selectedCigarette === null || req.body.selectedCigarette === '🚬'){
