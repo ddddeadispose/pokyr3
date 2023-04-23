@@ -1,6 +1,11 @@
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url);
 
+const https = require('https');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const TelegramApi = require('node-telegram-bot-api')
 const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
@@ -9,7 +14,7 @@ const fs = require("fs");
 const os = require('os');
 const LocalStorage = require('node-localstorage').LocalStorage;
 const localStorage = new LocalStorage('./scratch');
-const WebAppUrl = 'https://this-casino.ru/';
+const WebAppUrl = 'https://this-casino.ru/pokyr';
 //запрос переменных с текстом
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
@@ -36,6 +41,53 @@ let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 let citf = ''; // Переменная для записи цитат
 let counter = 0;
 let res
+
+//Настройки веб сервера для веб приложения
+const app = express();
+
+app.use(bodyParser.json());
+app.use(cors());
+
+app.post('/web-data', async (req, res) => {
+    let message = '';
+    let names = '';
+
+    if (req.body.selectedCigarette === '🍽'){
+        message = 'пойдём на обед.'
+    }
+    if (req.body.selectedCigarette === null){
+        message = 'пойдём на покур.'
+    }
+    if (req.body.selectedCigarette === '🚬'){
+        message = 'пойдём на покур.'
+    }
+    if (req.body.selectedCigarette === '🫂'){
+        message = 'пойдём на подтяг.'
+    }
+
+    for (let i = 0; i < req.body.selectedEmojis.length; i++){
+        names += req.body.selectedEmojis[i]
+    }
+
+    await bot.sendMessage(220815377, names + ' ' + message)
+
+    console.log(req.body.selectedEmojis.length)
+
+    return res.status(200).json({});
+})
+
+const PORT = 5000;
+
+const options = {
+    key: fs.readFileSync('/etc/letsencrypt/live/this-casino.ru/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/this-casino.ru/fullchain.pem')
+};
+
+const server = https.createServer(options, app);
+
+server.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
 
 const start = async () => {
 
@@ -86,6 +138,8 @@ const start = async () => {
         true,
         'Europe/Moscow'
     );
+
+
 
 
     bot.on( 'message', async msg => {
