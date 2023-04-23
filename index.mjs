@@ -52,6 +52,8 @@ app.post('/web-data', async (req, res) => {
     let message = '';
     let names = '';
 
+    res.status(200).json({});
+
     try {
 
         if (req.body.selectedCigarette === '🍽'){
@@ -95,7 +97,7 @@ app.post('/web-data', async (req, res) => {
             }
         }
 
-        await bot.sendMessage(-1001672307901, await vetr() + '\n' + names + ' ' + message)
+        await bot.sendMessage(220815377, await vetr() + '\n' + names + ' ' + message)
 
         console.log(req.body.selectedEmojis.length)
 
