@@ -97,11 +97,13 @@ app.post('/web-data', async (req, res) => {
             }*/
         }
 
-        await bot.sendMessage(220815377, await vetr() + '\n' + names + ' ' + message)
+        if (req.body.selectedCigarette === null || req.body.selectedCigarette === '🚬'){
+            await bot.sendMessage(220815377, await vetr())
+        }
+
+        await bot.sendMessage(220815377,  names + ' ' + message)
 
         console.log(req.body.selectedEmojis.length)
-
-        return res.status(200).json({});
 
     }catch (e){
         console.log(e)
