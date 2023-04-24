@@ -100,10 +100,10 @@ app.post('/web-data', async (req, res) => {
         }
 
         if (req.body.selectedCigarette === null || req.body.selectedCigarette === '🚬'){
-            await bot.sendMessage(-1001672307901, await vetr())
+            await bot.sendMessage(Me, await vetr())
         }
 
-        await bot.sendMessage(-1001672307901, req.body.username.first_name + ' отправляет уведомление:\n' +   names + ' ' + message)
+        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' +   names + ' ' + message)
 
     }catch (e){
         console.log(e)
