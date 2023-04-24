@@ -58,19 +58,6 @@ app.post('/web-data', async (req, res) => {
 
     try {
 
-        if (req.body.selectedCigarette === '🍽'){
-            message = 'пойдём на обед.'
-        }
-        if (req.body.selectedCigarette === null){
-            message = 'пойдём на покур.'
-        }
-        if (req.body.selectedCigarette === '🚬'){
-            message = 'пойдём на покур.'
-        }
-        if (req.body.selectedCigarette === '🫂'){
-            message = 'пойдём на подтяг.'
-        }
-
         for (let i = 0; i < req.body.selectedEmojis.length; i++){
             names += req.body.selectedEmojis[i]
 
@@ -99,7 +86,7 @@ app.post('/web-data', async (req, res) => {
             }
         }
 
-        if (req.body.selectedCigarette === null || req.body.selectedCigarette === '🚬'){
+        if (req.body.selectedEmojis.includes('покур')){
             await bot.sendMessage(Me, await vetr())
         }
 
