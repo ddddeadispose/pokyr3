@@ -52,6 +52,8 @@ app.post('/web-data', async (req, res) => {
     let message = '';
     let names = '';
 
+    console.log(req.body)
+
     res.status(200).json({});
 
     try {
@@ -101,9 +103,7 @@ app.post('/web-data', async (req, res) => {
             await bot.sendMessage(-1001672307901, await vetr())
         }
 
-        await bot.sendMessage(-1001672307901,  names + ' ' + message)
-
-        console.log(req.body.selectedEmojis.length)
+        await bot.sendMessage(-1001672307901, req.body.username.first_name + ' отправляет уведомление:\n' +   names + ' ' + message)
 
     }catch (e){
         console.log(e)
