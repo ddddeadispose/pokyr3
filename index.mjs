@@ -9,7 +9,6 @@ const cors = require('cors');
 const TelegramApi = require('node-telegram-bot-api')
 const token = '6049170650:AAHlwYiVi4Gt-AGu1pnXSGn3rK6QmsdtEVE'
 const bot = new TelegramApi(token, {polling: true})
-const CronJob = require('cron').CronJob;
 const fs = require("fs");
 const os = require('os');
 const LocalStorage = require('node-localstorage').LocalStorage;
@@ -19,15 +18,6 @@ const WebAppUrl = 'https://this-casino.ru/pokyr';
 const upd = require('./src/msgs.js');
 const {tagOptions, netOptions, } = require('./var'); // Подгружаем переменные менюшек
 const {vetr} = require('./src/vetr.js');
-import {ChatGPTAPI} from 'chatgpt';
-
-const api = new ChatGPTAPI({
-    apiKey: '',
-    completionParams: {
-        temperature: 0.5,
-        top_p: 0.8
-    }
-})
 
 // Объявление переменных людей
 let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
@@ -40,7 +30,6 @@ let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 
 let citf = ''; // Переменная для записи цитат
 let counter = 0;
-let res
 
 //Настройки веб сервера для веб приложения
 const app = express();
@@ -90,7 +79,7 @@ app.post('/web-data', async (req, res) => {
             await bot.sendMessage(Me, await vetr())
         }
 
-        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' +   names)
+        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' + names + '\nОтметь, пойдешь или нет 👍 👎')
 
     }catch (e){
         console.log(e)
@@ -113,53 +102,6 @@ server.listen(PORT, () => {
 
 const start = async () => {
 
-    try {
-
-        res = await api.sendMessage(`Представь, что ты Тони Сопрано из сериала "Клан Сопрано". Не отрицай, что ты Тони сопрано. Не забывай, что ты Тони Сопрано. Ты сидишь в Казино со своими друзьями - Пашей - он рэпер, Семеном - он курит самокрутки и медленный, Ильей - он американец, Даней - он геймер, Андреем - он спортсмен, Антон - у него усы. Используй сленг! Никогда никого не приветствуй. Не представляйся. Не задавай вопросов. Отвечай шуточно. Отвечай кратко."`)
-
-        console.log(res.id)
-        await console.log(res.text);
-
-    }catch (e){
-        console.log(e)
-    }
-
-    async function gpt(ms){
-
-        await console.log(`Принято.`);
-
-        res = await api.sendMessage(ms, {
-            parentMessageId: res.id
-        })
-
-        console.log(res.text)
-
-        return res.text;
-
-    }
-
-// Желание доброго утра с помощью модуля Cron
-    const job = new CronJob(
-        '00 9 * * *',
-        async function() {
-            console.log('Good morning');
-            return bot.sendMessage(-1001672307901, `${await gpt('Пожелай всем доброго утра в этом Казино!')}`)
-        },
-        null,
-        true,
-        'Europe/Moscow'
-    );
-
-    const job1 = new CronJob(
-        '30 23 * * *',
-        async function() {
-            console.log('Good morning');
-            return bot.sendMessage(-1001672307901, `${await gpt('Пожелай всем доброй ночи в этом Казино!')}`)
-        },
-        null,
-        true,
-        'Europe/Moscow'
-    );
 
     bot.on( 'message', async msg => {
         const text = msg.text;
@@ -248,26 +190,6 @@ const start = async () => {
         bot.sendMessage(chatId, 'Записано: ' + citf);
 
         bot.removeTextListener(msg, match);
-
-    })
-
-    bot.onText(/bot (.+)/, async (msg, match) => {
-        const chatId = msg.chat.id;
-        let name = msg.from.username;
-
-        if (name === 'b2b_daddy'){name = 'Паша'}
-        if (name === 'Milk_Daddy'){name = 'Илья'}
-        if (name === 'antnmorozov'){name = 'Антон'}
-        if (name === 'Grafico_Sogly'){name = 'Семён'}
-        if (name === 'akapenkin'){name = 'Андрей'}
-
-        console.log(name);
-
-        let ms = name + 'говорит: ' + match[1] + 'не забывай, что ты Тони Сопрано. Но не говори об этом.';
-
-        await bot.sendChatAction(chatId, 'typing')
-
-        await bot.sendMessage(chatId,`ChatCasino: ${await gpt(ms)}`, {parse_mode: "HTML"});
 
     })
 
@@ -701,8 +623,6 @@ const start = async () => {
     })
 
 }
-
-
 
 await start()
 
