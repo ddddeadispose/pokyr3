@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/web-data', async (req, res) => {
-    let message = 'Тебя тэгнули в чате, напиши пойдешь или нет';
+    let message = 'Тебя тэгнули в чате, напиши пойдешь или нет.';
     let names = '';
 
     console.log(req.body)
@@ -76,10 +76,10 @@ app.post('/web-data', async (req, res) => {
         }
 
         if (req.body.selectedEmojis.includes(' покур')){
-            await bot.sendMessage(Me, await vetr())
+            await bot.sendMessage(-1001672307901, await vetr())
         }
 
-        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' + names + '\nОтметь, пойдешь или нет 👍 👎')
+        await bot.sendMessage(-1001672307901, req.body.username.first_name + ' отправляет уведомление:\n' + names + '\nОтметь, пойдешь или нет 👍 👎')
 
     }catch (e){
         console.log(e)
