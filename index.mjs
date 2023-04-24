@@ -22,7 +22,7 @@ const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: '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',
+    apiKey: '',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
@@ -90,7 +90,7 @@ app.post('/web-data', async (req, res) => {
             await bot.sendMessage(Me, await vetr())
         }
 
-        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' +   names + ' ' + message)
+        await bot.sendMessage(Me, req.body.username.first_name + ' отправляет уведомление:\n' +   names)
 
     }catch (e){
         console.log(e)
