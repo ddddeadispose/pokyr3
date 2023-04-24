@@ -22,7 +22,7 @@ const {vetr} = require('./src/vetr.js');
 import {ChatGPTAPI} from 'chatgpt';
 
 const api = new ChatGPTAPI({
-    apiKey: '',
+    apiKey: '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',
     completionParams: {
         temperature: 0.5,
         top_p: 0.8
@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/web-data', async (req, res) => {
-    let message = '';
+    let message = 'Тебя тэгнули в чате, напиши пойдешь или нет';
     let names = '';
 
     console.log(req.body)
@@ -63,30 +63,30 @@ app.post('/web-data', async (req, res) => {
 
             switch (req.body.selectedEmojis[i]){
                 case ' @b2b_daddy':
-                    await bot.sendMessage(Me, 'Паша ' + message)
+                    await bot.sendMessage(Me, message)
                     break
                 case ' @Grafico_Sogly':
-                    await bot.sendMessage(Semen, 'Сёма ' + message)
+                    await bot.sendMessage(Semen, message)
                     break
                 case ' @Axtra4an':
-                    await bot.sendMessage(D, 'Даня ' + message)
+                    await bot.sendMessage(D, message)
                     break
                 case ' @akapenkin':
-                    await bot.sendMessage(An, 'Андрей ' + message)
+                    await bot.sendMessage(An, message)
                     break
                 case ' @DmitriyBagaev':
-                    await bot.sendMessage(Dima, 'Дима ' + message)
+                    await bot.sendMessage(Dima, message)
                     break
                 case ' @antnmorozov':
-                    await bot.sendMessage(Ant, 'Антоша ' + message)
+                    await bot.sendMessage(Ant, message)
                     break
                 case ' @Milk_Daddy':
-                    await bot.sendMessage(Il, 'Илья ' + message)
+                    await bot.sendMessage(Il, message)
                     break
             }
         }
 
-        if (req.body.selectedEmojis.includes('покур')){
+        if (req.body.selectedEmojis.includes(' покур')){
             await bot.sendMessage(Me, await vetr())
         }
 
