@@ -93,6 +93,6 @@ async function vetr(){
 
 }
 
-module.exports = {
-    vetr: vetr,
-};
+    module.exports = {
+        vetr: vetr,
+    };
