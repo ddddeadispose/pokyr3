@@ -20,12 +20,12 @@ const {tagOptions, netOptions, } = require('./var'); // Подгружаем п�
 const {vetr} = require('./src/vetr.js');
 
 // Объявление переменных людей
-let Me = 220815377; let nameMe = ' @b2b_daddy'; // Паша
+let Me = 655159177; let nameMe = ' @marklaren'; // Артема
 let Semen = 60588441; let nameSemen = ' @Grafico_Sogly'; // Семен
 let D = 462415609; let nameD = ' @Axtra4an'; // Даня
 let An = 314197836; let nameAn = ' @akapenkin'; // Анрей
 let Dima = 230680864; let nameDima = ' @DmitriyBagaev';  // Дима
-let Ant = 275234023; let nameAnt = ' @antnmorozov';  // Антон
+let Ant = 275234023; let nameAnt = ' @anto_xaxa';  // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
 
 let citf = ''; // Переменная для записи цитат
@@ -41,7 +41,7 @@ const start = async () => {
 
         if (text === '/test'){ // Вывод кто есть в офисе, а кого нет
 
-            return bot.sendMessage(chatId,'Паша: ' + localStorage.getItem('MeTr') +
+            return bot.sendMessage(chatId,'Артем: ' + localStorage.getItem('MeTr') +
                 '. Семён: ' + localStorage.getItem('SemenTr') +
                 '. Даня: ' + localStorage.getItem('DTr') +
                 '. Андрей: ' + localStorage.getItem('AnTr') +
@@ -131,7 +131,7 @@ const start = async () => {
         let zovname = ''; // Переменная записи зовущего
 
         // Проверка по юзер ид кто зовёт
-        if (userId === 220815377) {zovname = 'Паши'}
+        if (userId === 655159177) {zovname = 'Артёма'}
         if (userId === 60588441) {zovname = 'Семёна'}
         if (userId === 462415609) {zovname = 'Дани'}
         if (userId === 314197836) {zovname = 'Андрея'}
@@ -403,7 +403,7 @@ const start = async () => {
             await localStorage.setItem('DimaTr', true);
             await localStorage.setItem('AntTr', true);
             await localStorage.setItem('IlTr', true);
-            await (nameMe = ' @b2b_daddy');
+            await (nameMe = ' @marklaren');
             await (nameSemen = ' @Grafico_Sogly');
             await (nameAn = ' @akapenkin');
             await (nameD = ' @Axtra4an');
@@ -421,14 +421,14 @@ const start = async () => {
 
             if (localStorage.getItem('MeTr') === 'true'){
 
-                await bot.sendMessage(chatId,'Паши сегодня нет в офисе');
+                await bot.sendMessage(chatId,'Артема сегодня нет в офисе');
                 await localStorage.setItem('MeTr', false);
 
             } else {
 
-                await bot.sendMessage(chatId,'Паша есть в офисе');
+                await bot.sendMessage(chatId,'Артем есть в офисе');
                 await localStorage.setItem('MeTr', true);
-                nameMe = ' @b2b_daddy'
+                nameMe = ' @marklaren'
 
             }
 
