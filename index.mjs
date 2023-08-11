@@ -408,7 +408,7 @@ const start = async () => {
             await (nameAn = ' @akapenkin');
             await (nameD = ' @Axtra4an');
             await (nameDima = ' @DmitriyBagaev');
-            await (nameAnt = ' @antnmorozov');
+            await (nameAnt = ' @anto_xaxa');
             await (nameIl = ' @Milk_Daddy');
             await console.log(userId);
             await bot.sendMessage(chatId,'Все на месте, спортсмены! 📢')
@@ -524,7 +524,7 @@ const start = async () => {
 
                 await bot.sendMessage(chatId,'Антон есть в офисе');
                 await localStorage.setItem('AntTr', true);
-                nameAnt = ' @antnmorozov';
+                nameAnt = ' @anto_xaxa';
 
             }
 
