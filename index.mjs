@@ -27,6 +27,7 @@ let An = 314197836; let nameAn = ' @akapenkin'; // Анрей
 let Dima = 230680864; let nameDima = ' @DmitriyBagaev';  // Дима
 let Ant = 275234023; let nameAnt = ' @anto_xaxa';  // Антон
 let Il = 472281105; let nameIl = ' @Milk_Daddy';  // Илья
+let Iv = 142135885; let nameIv = ' @vane4kasurmin';  // Ваня
 
 let citf = ''; // Переменная для записи цитат
 let counter = 0;
@@ -47,21 +48,8 @@ const start = async () => {
                 '. Андрей: ' + localStorage.getItem('AnTr') +
                 '. Дима: ' + localStorage.getItem('DimaTr') +
                 '. Антон: ' + localStorage.getItem('AntTr') +
-                '. Илья: ' + localStorage.getItem('IlTr'))
-
-        }
-
-        if (text === '/test_tag'){ // Не доделанная веб хуйня
-
-            await bot.sendMessage(chatId,'Меню',{
-
-                reply_markup: {
-                    inline_keyboard: [
-                        [{text: 'Покур', web_app:{url: WebAppUrl}}],
-                    ]
-                }
-
-            })
+                '. Илья: ' + localStorage.getItem('IlTr') +
+                '. Ваня: ' + localStorage.getItem('IvTr'))
 
         }
 
@@ -138,6 +126,7 @@ const start = async () => {
         if (userId === 230680864) {zovname = 'Димы'}
         if (userId === 275234023) {zovname = 'Антона'}
         if (userId === 472281105) {zovname = 'Ильи'}
+        if (userId === 142135885) {zovname = 'Вани'}
 
         counter++;
         console.log('Запросов колбэк:' + counter);
@@ -151,6 +140,13 @@ const start = async () => {
             }
             else {
                 await (nameMe = '')
+            }
+
+            if (localStorage.getItem('IvTr') === 'true') {
+                await bot.sendMessage(Iv, 'Пойдём курить стандартным паком, Ваня.')
+            }
+            else {
+                await (nameIv = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
@@ -185,6 +181,13 @@ const start = async () => {
             }
             else {
                 await (nameMe = '')
+            }
+
+            if (localStorage.getItem('IvTr') === 'true') {
+                await bot.sendMessage(Iv, 'Пойдём курить стандартным паком, Ваня.')
+            }
+            else {
+                await (nameIv = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
@@ -233,6 +236,13 @@ const start = async () => {
             }
             else {
                 await (nameMe = '')
+            }
+
+            if (localStorage.getItem('IvTr') === 'true') {
+                await bot.sendMessage(Iv, 'Пойдём курить стандартным паком, Ваня.')
+            }
+            else {
+                await (nameIv = '')
             }
 
             if (localStorage.getItem('SemenTr') === 'true') {
@@ -295,6 +305,13 @@ const start = async () => {
             }
             else {
                 await (nameSemen = '')
+            }
+
+            if (localStorage.getItem('IvTr') === 'true') {
+                await bot.sendMessage(Iv, 'Идем кушать, сладкий')
+            }
+            else {
+                await (nameIv = '')
             }
 
             if (localStorage.getItem('AntTr') === 'true') {
@@ -403,6 +420,7 @@ const start = async () => {
             await localStorage.setItem('DimaTr', true);
             await localStorage.setItem('AntTr', true);
             await localStorage.setItem('IlTr', true);
+            await localStorage.setItem('IvTr', true);
             await (nameMe = ' @marklaren');
             await (nameSemen = ' @Grafico_Sogly');
             await (nameAn = ' @akapenkin');
@@ -410,6 +428,7 @@ const start = async () => {
             await (nameDima = ' @DmitriyBagaev');
             await (nameAnt = ' @anto_xaxa');
             await (nameIl = ' @Milk_Daddy');
+            await (nameIv = ' @vane4kasurmin');
             await console.log(userId);
             await bot.sendMessage(chatId,'Все на месте, спортсмены! 📢')
 
@@ -544,6 +563,25 @@ const start = async () => {
                 await bot.sendMessage(chatId,'Илья есть в офисе');
                 await localStorage.setItem('IlTr', true);
                 nameIl = ' @Milk_Daddy';
+
+            }
+
+        }
+
+        if (data === 'Iv'){
+
+            await console.log(userId);
+
+            if (localStorage.getItem('IvTr') === 'true'){
+
+                await bot.sendMessage(chatId,'Вани сегодня нет в офисе');
+                await localStorage.setItem('IvTr', false);
+
+            } else {
+
+                await bot.sendMessage(chatId,'Ваня есть в офисе');
+                await localStorage.setItem('IvTr', true);
+                nameIv = ' @vane4kasurmin';
 
             }
 
