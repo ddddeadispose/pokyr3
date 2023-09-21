@@ -170,7 +170,7 @@ const start = async () => {
                 await (nameIl = '')
             }
 
-            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + ' курение.\nОтметь, пойдешь или нет 👍 👎')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameIv + ' курение.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Курение расширенным паком
@@ -225,7 +225,7 @@ const start = async () => {
                 await (nameDima = '')
             }
 
-            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + ' курение.\nОтметь, пойдешь или нет 👍 👎')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameIv + ' курение.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Курение все вместе
@@ -287,7 +287,7 @@ const start = async () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn +' курение все нахуй.\nОтметь, пойдешь или нет 👍 👎')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '.\n' + await vetr() + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameD + nameDima + nameAn + nameIv +' курение все нахуй.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // обед
@@ -342,7 +342,7 @@ const start = async () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameSemen + nameAnt + nameIl + nameD + nameAn +' идём на обед.\nОтметь, пойдешь или нет 👍 👎')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameSemen + nameAnt + nameIl + nameD + nameAn + nameIv +' идём на обед.\nОтметь, пойдешь или нет 👍 👎')
 
         }
         // Подтяг
@@ -384,7 +384,7 @@ const start = async () => {
                 await (nameAn = '')
             }
 
-            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameAn +' подтяг жесткий. \nОтметь, пойдешь или нет 👍 👎')
+            await bot.sendMessage(-1001672307901, 'Уведомление от: ' + zovname + '\n' + nameMe + nameSemen + nameAnt + nameIl + nameAn + nameIv +' подтяг жесткий. \nОтметь, пойдешь или нет 👍 👎')
 
         }
 
