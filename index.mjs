@@ -38,6 +38,7 @@ const start = async () => {
     bot.on( 'message', async msg => {
         const text = msg.text;
         const chatId = msg.chat.id;
+        const from = msg.from.id;
         const data = msg.data;
 
         if (text === '/test'){ // Вывод кто есть в офисе, а кого нет
@@ -68,7 +69,7 @@ const start = async () => {
 
         if (text === '/tag@Pokyr_Casino_Bot' || text === '/tag'){
 
-            return bot.sendMessage(chatId,'Че делать будем нахуй? Кого тэгать?', tagOptions)
+            return bot.sendMessage(from,'Че делать будем нахуй? Кого тэгать?', tagOptions)
 
         }
 
