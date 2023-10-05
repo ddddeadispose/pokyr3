@@ -72,10 +72,9 @@ const start = async () => {
             console.log(msg)
 
             if (chatId === -1001672307901) {
-                console.log('ааааа')
-
-                await bot.sendMessage(chatId, '🤡',{reply_to_message_id: msg.message_id})
+                return bot.sendMessage(chatId, '🤡',{reply_to_message_id: msg.message_id})
             }
+
             return bot.sendMessage(from,'Че делать будем нахуй? Кого тэгать?', tagOptions)
 
         }
